@@ -1,0 +1,62 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+    <head>
+        <title>在线报价系统</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="generator" content="anticode" />
+        <meta name="author" content="anticode"/>
+        <link rel="stylesheet" id="bt_index_theme_link" href="__ROOT____THM__/<?php echo ($theme); ?>/easyui.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="__ROOT____THM__/icon.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="__ROOT____CSS__/css.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="__ROOT____JS__/core/jquery-1.8.0.min.js"></script>
+        <script type="text/javascript" src="__ROOT____JS__/core/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="__ROOT____JS__/locale/easyui-lang-zh_CN.js"></script>
+        <script type="text/javascript" src="__ROOT____JS__/core/btutil.js"></script>
+        <script type="text/javascript" src="__ROOT____JS__/My97DatePicker/WdatePicker.js"></script>
+        <script>
+            var _ROOT_ = '__ROOT__';
+            var _THEME_PATH_ = '__ROOT____THM__';
+            var _MENUDATA_ = <?php echo ($menuData); ?>;
+            var _MEMBERDATA_ = <?php echo ($memberData); ?>;
+            var _OPTIONS = <?php echo ($options); ?>;
+        </script>
+        <script type="text/javascript" src="__ROOT____JS__/common/global.js"></script>
+    </head>
+    <body class="easyui-layout" <?php echo ($canceled?'onload="_systemLock()"':''); ?>>
+        <div data-options="region:'north',border:false" style="height: 60px;overflow: hidden;">
+            <h1 style="position: absolute;">在线报价系统</h1>
+            <div class="user_info">【<?php echo ($member["uname"]); ?>】,欢迎您。当前登陆状态：<?php echo ($area["country"]); ?>.<?php echo ($area["area"]); ?>(<?php echo ($ip); ?>)。</div>
+            <div class="system_controller"><a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#bt_index_zxMenu',iconCls:'icon-controller'">控制面板</a></div>
+        </div>
+        <div data-options="region:'west'" style="width: 200px;border-right: none;border-bottom: none;" title="导航">
+            <ul id="bt_index_menu_tree"></ul>
+        </div>
+        <div id="bt_index_layout_center" data-options="region:'center',href:'__ROOT__/global/welcome',tools:[{iconCls:'icon-openlayer',handler:_openNewWindow}]" style="border-bottom: none;border-top: none;padding: 5px;" title="欢迎">
+
+        </div>
+        <div data-options="region:'south'" style="height: 25px;text-align: center;line-height: 25px;overflow: hidden;">
+            版权所有 @anticode
+            <form id="bt_jump_form" method="post" style="display: none;" target="_blank"><input name="title" id="bt_jump_page_title"/></form>
+        </div>
+        <div id="bt_loading" class="loading"></div>
+        <div id="bt_loading_progress" class="progress">执行中...</div>
+
+        <div id="bt_index_zxMenu" style="display: none;">  
+            <div data-options="iconCls:'icon-user'">个人信息</div>
+            <div data-options="iconCls:'icon-setting'">个人设置</div>
+            <div data-options="iconCls:'icon-theme'">
+                <span>主题切换</span>
+                <div style="width:100px;">  
+                    <div class="theme" name="default">default</div>  
+                    <div class="theme" name="bootstrap">bootstrap</div>  
+                    <div class="theme" name="black">black</div>  
+                    <div class="theme" name="gray">gray</div>
+                    <div class="theme" name="metro">metro</div>
+                </div> 
+            </div>
+            <div class="menu-sep"></div> 
+            <div data-options="iconCls:'icon-lock'" id="bt_index_control_menu_lock">锁定系统</div>
+            <div data-options="iconCls:'icon-exit',href:'/public/doLogout'">退出系统</div>
+        </div>
+    </body>
+</html>

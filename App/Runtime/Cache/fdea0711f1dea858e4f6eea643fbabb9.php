@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><h1>在线报价系统</h1>
