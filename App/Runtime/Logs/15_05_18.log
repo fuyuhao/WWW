@@ -1,0 +1,421 @@
+[ 2015-05-18T08:25:58+08:00 ] 127.0.0.1 /public/verify
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-18T08:25:58+08:00 ] ERR: (ThinkException) 无法加载模块:Favicon
+[ 2015-05-18T08:25:58+08:00 ] ERR: (ThinkException) 无法加载模块:Favicon
+[ 2015-05-18T08:26:02+08:00 ] 127.0.0.1 /public/verify?t=1431908762550
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-18T08:26:08+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of MenuModel::_after_insert() should be compatible with that of Model::_after_insert() E:\BaiduYunDownload\phpStudy\WWW\App\Lib\Model\MenuModel.class.php 第 14 行.
+NOTIC: [2048] Declaration of MenuModel::_after_update() should be compatible with that of Model::_after_update() E:\BaiduYunDownload\phpStudy\WWW\App\Lib\Model\MenuModel.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `bt_menu` [ RunTime:0.012001s ]
+SQL: SELECT * FROM `bt_menu` ORDER BY seq asc  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `bt_options` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `bt_options` WHERE ( `uid` = 0 )  [ RunTime:0.001000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.005001s ]
+INFO: [ view_template ] --END-- [ RunTime:0.005001s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: canceled E:\BaiduYunDownload\phpStudy\WWW\App\Runtime\Cache\85dd816b296f255aa318be0382905e85.php 第 25 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.025001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-18T08:26:08+08:00 ] 127.0.0.1 /global/welcome?_=1431908768211
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-18T08:26:10+08:00 ] ERR: (ThinkException) 无法加载模块:Product
+[ 2015-05-18T08:26:11+08:00 ] ERR: (ThinkException) 无法加载模块:Product
+[ 2015-05-18T08:26:20+08:00 ] 127.0.0.1 /product/index?_=1431908780397
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.015600s ]
+INFO: [ view_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2015-05-18T08:26:21+08:00 ] 127.0.0.1 /product/index?_=1431908781443
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.015600s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:26:22+08:00 ] 127.0.0.1 /product/index?_=1431908782028
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:26:22+08:00 ] 127.0.0.1 /product/index?_=1431908782424
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.015600s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:26:22+08:00 ] 127.0.0.1 /product/index?_=1431908782414
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.015600s ]
+INFO: [ view_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2015-05-18T08:26:22+08:00 ] 127.0.0.1 /gys/index?_=1431908782853
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:26:24+08:00 ] 127.0.0.1 /product/index?_=1431908784790
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:26:47+08:00 ] 127.0.0.1 /product/index?_=1431908807241
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:26:48+08:00 ] 127.0.0.1 /product/index?_=1431908808385
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.015600s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:29:03+08:00 ] 127.0.0.1 /product/index?_=1431908943153
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.010000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T08:29:03+08:00 ] 127.0.0.1 /gys/index?_=1431908943728
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.010000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2015-05-18T09:22:20+08:00 ] 127.0.0.1 /product/index?_=1431912140909
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-18T16:35:14+08:00 ] ERR: (ThinkException) 无法加载模块:China
+[ 2015-05-18T16:35:14+08:00 ] ERR: (ThinkException) 无法加载模块:GetAnnouncement
+[ 2015-05-18T16:36:16+08:00 ] ERR: (ThinkException) 无法加载模块:China
+[ 2015-05-18T16:36:17+08:00 ] ERR: (ThinkException) 无法加载模块:GetAnnouncement
+[ 2015-05-18T16:36:28+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:36:28+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:36:38+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:36:51+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:36:51+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:36:51+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:36:51+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:37:14+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:37:14+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:37:17+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:37:39+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:38:00+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:38:28+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:38:37+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:39:14+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:39:22+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:39:58+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:40:05+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:40:05+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:40:08+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:40:10+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:40:43+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:40:45+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:40:58+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:42:58+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:43:32+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:43:36+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:43:36+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:43:39+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:44:08+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:44:21+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:44:36+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:44:51+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:00+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:06+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:06+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:10+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:16+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:16+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:17+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:46+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:45:56+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:16+08:00 ] ERR: (ThinkException) 无法加载模块:China
+[ 2015-05-18T16:46:18+08:00 ] ERR: (ThinkException) 无法加载模块:GetAnnouncement
+[ 2015-05-18T16:46:26+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:26+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:26+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:27+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:27+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:40+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:41+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:46:52+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:47:00+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:47:18+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:47:37+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:47:37+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:47:38+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:47:44+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:48:02+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:48:18+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:48:23+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:48:45+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:48:47+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:48:55+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:48:55+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:49:35+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:50:09+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:50:12+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:50:27+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:50:43+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
+[ 2015-05-18T16:51:36+08:00 ] ERR: (ThinkException) 无法加载模块:Stats
