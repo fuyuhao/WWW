@@ -14,7 +14,7 @@
 class UserViewModel extends ViewModel {
 
     protected $viewFields = array(
-        'User' => array('uid','uname', 'account', 'mail','ustatus')
+        'User' => array('uid','uname', 'account', 'mail','ustatus','imgfile1','imgfile2','imgfile3','imgfile4')
     );
 
 }

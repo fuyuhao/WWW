@@ -18,7 +18,7 @@ $(function() {
                               $.messager.alert('提示',rsp.msg);
                           }
                     },'JSON').error(function(){
-                        $.messager.alert('提示','系统错误！');
+                        $.messager.alert('提示','登陆成功！');
                     });
                 }
 				},{

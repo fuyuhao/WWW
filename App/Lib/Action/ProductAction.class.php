@@ -18,8 +18,8 @@ class ProductAction extends BaseAction {
     }
 	
 	public function getData() {
-        $TypeModel = D('UserView');
-        $dataList = $TypeModel->order('uid asc,ustatus asc')->select();
+        $TypeModel = D('ProductView');
+        $dataList = $TypeModel->order('pid asc')->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	

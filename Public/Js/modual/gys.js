@@ -16,8 +16,10 @@ context.ready = function() {
                         }
                         return '<font color="red">未审核</font>';
                     }},
-                {field: 'uid', title: '审核操作', width: 100, align: 'center', formatter: function(value) {
-                        return '<span title="审核" class="img-btn icon-edit" uid=' + value + '></span>';
+                {field: 'uid', title: '操作', width: 100, align: 'center', formatter: function(value) {
+						var ctrs = ['<span  title="详情" class="img-btn icon-tip" type="detail" uid=' + value + '></span>', '<span title="审核" class="img-btn icon-ok" type="check" uid=' + value + '></span>'];
+                        return ctrs.join(' ');
+						
                     }}
             ]],
         toolbar: [{
@@ -35,11 +37,18 @@ context.ready = function() {
             }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
+			
             $bodyView.find('span[uid]').click(function(e) {
+				var type = $(this).attr('type');
                 e.stopPropagation();
                 var uid = $(this).attr('uid');
-                updateView(uid);
+                if (type === 'check') {
+                    context.updateView(uid);
+                } else {
+                    context.mydetail(uid);
+                }
             });
+			
         }
     });
 };
@@ -47,7 +56,7 @@ context.ready = function() {
 var addView = function() {
 
 };
-var updateView = function(uid) {
+context.updateView = function(uid) {
 	
 	$.confirm('确认审核？', function(r) {
         if (r) {
@@ -62,6 +71,16 @@ var updateView = function(uid) {
         });
 	
 };
+
+context.mydetail = function(uid) {
+	
+	var myurl=_ROOT_ + '/gys/getdetail?uid=' + uid
+    window.open(myurl);    
+	
+};
+
+
+
 var doDelete = function() {
 
 };
