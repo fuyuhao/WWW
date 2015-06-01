@@ -20,6 +20,7 @@ return array(
         '__CSS__' => '/Public/Css', //样式目录
         '__IMG__' => '/Public/Images', //图片目录
         '__THM__' => '/Public/Themes', //主题目录
+		'__UPLOADS__' => '/Public/Uploads', //主题目录
     )
 );
 ?>

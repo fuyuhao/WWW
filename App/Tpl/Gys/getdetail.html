@@ -4,7 +4,16 @@
      </head>
      <body>
         <volist name="data" id="vo">
-        {$vo.uname}--{$vo.account}<br/>
+        姓名：{$vo.uname}<br/>
+		<br>账号：{$vo.account}<br/>
+		<br>邮箱：{$vo.mail}<br/>
+		<img src=__UPLOADS__/{$vo.imgfile1} />
+		<br/>
+		<img src=__UPLOADS__/{$vo.imgfile2} />
+		<br/>
+		<img src=__UPLOADS__/{$vo.imgfile3} />
+		<br/>
+		<img src=__UPLOADS__/{$vo.imgfile4} />
         </volist>
      </body>
     </html>
