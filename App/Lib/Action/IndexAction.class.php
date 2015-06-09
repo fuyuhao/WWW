@@ -16,11 +16,11 @@ class IndexAction extends BaseAction {
     public function index() {
         $memberInfo = session('member');
         $Menu = D('Menu');
-        if ($memberInfo['uid'] == 0) {
+        //if ($memberInfo['uid'] == 0) {
             $dataList = $Menu->order('seq asc')->select();
-        } else {
-            $dataList = $Menu->getMenuDataByUid($memberInfo['uid']);
-        }
+        //} else {
+        //    $dataList = $Menu->getMenuDataByUid($memberInfo['uid']);
+        //}
         $_allResources = session('_resources');
         foreach ($dataList as $value) {
             if (!empty($value['href']))

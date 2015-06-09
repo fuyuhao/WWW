@@ -37,7 +37,7 @@ class BaseAction extends Action {
             }
             exit;
         }
-
+		/*
         $member = session('member');
         if (__ACTION__ != '/Index/index' && $member['uid'] != 0) {//非首页或者非系统管理员 权限判断
             $_allResources = session('_resources');
@@ -52,7 +52,7 @@ class BaseAction extends Action {
                 exit;
             }
         }
-
+*/
 
         if (session('?cancel')) {//判断是否锁定
             $this->assign('canceled', true);
