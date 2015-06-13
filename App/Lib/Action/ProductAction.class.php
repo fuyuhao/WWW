@@ -33,7 +33,27 @@ class ProductAction extends BaseAction {
         $this->returnStatus();
 		
 	}
+	
+	public function comboData() {
+        $TypeModel = D('UnitType');
+        $list = $TypeModel->select();
+        $this->ajaxReturn($list);
+    }
 
+	public function doSave() {
+        $Model = D("product");
+        if (!$Model->create()) {
+            $this->returnStatus(false, $Model->getError());
+        } else {
+
+                $Model->add();
+
+            if ($Model->getError()) {
+                $this->returnStatus(false, $Model->getError());
+            }
+            $this->returnStatus();
+        }
+    }
 
 }
 

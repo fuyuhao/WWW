@@ -56,8 +56,39 @@ class GrxxAction extends BaseAction {
 	{
 		$file->where($did)->setField('imgfile1',$info[0]["savename"]);
 	}
+	
+	if($myid==2)
+	{
+		$file->where($did)->setField('imgfile2',$info[0]["savename"]);
+	}
+
+	
+	if($myid==3)
+	{
+		$file->where($did)->setField('imgfile3',$info[0]["savename"]);
+	}
+
+	
+	if($myid==4)
+	{
+		$file->where($did)->setField('imgfile4',$info[0]["savename"]);
+	}
+	
 	$this->returnStatus();
 	}
+	
+
+	public function saveuser() {
+		$file = M("User");
+		$memberInfo = session('member');
+		$did = $memberInfo['uid'];
+		$did="uid=".$did;
+		$mail = $_POST['mymail'];
+		$file->where($did)->setField('mail',$mail);
+		
+    }
+	
+
 	
 	public function getData() {
         $TypeModel = D('UserView');

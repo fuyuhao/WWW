@@ -62,7 +62,17 @@ context.ready = function() {
 };
 
 var addView = function() {
-
+    viewDialog = $.dialog({
+        title: '产品添加',
+        href: _ROOT_ + '/product/add',
+        width: 300,
+        bodyStyle: {overflow: 'hidden'},
+        height: 200,
+        buttons: [{
+                text: '提交',
+                handler: doSubmit
+            }]
+    });
 };
 var updateView = function(uid) {
 	
@@ -84,7 +94,15 @@ var doDelete = function() {
 };
 
 var doSubmit = function() {
-
+    $bt_unit_from = $('#bt_unit_from');
+        $.post(_ROOT_ + '/product/doSave', $bt_unit_from.toJson(), function(rsp) {
+            if (rsp.status) {
+                $grid.datagrid('reload');
+                viewDialog.dialog('close');
+            } else {
+                $.alert(rsp.msg);
+            }
+        }, "JSON");
 };
 var typeView = function() {
 

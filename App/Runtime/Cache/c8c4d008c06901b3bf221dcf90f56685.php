@@ -1,0 +1,17 @@
+<?php if (!defined('THINK_PATH')) exit();?>﻿<form id="bt_unit_from" class="form">
+    <table align="center">
+	
+	    <tr>
+            <td>产品名称：</td>
+            <td><input name="pname" type="text" value="" class="easyui-validatebox" required="required"/></td>
+        </tr>
+	
+        <tr>
+            <td>产品单位：</td>
+            <td valign="middle"><input id="bt_unit_combobox"  name='punit' class="easyui-combobox" style="width:153px;" data-options="required:true,url:'__ROOT__/product/comboData',valueField:'unitname',textField:'unitname',editable:false" value=""></td>  
+        </tr>
+
+
+    </table>
+   
+</form>

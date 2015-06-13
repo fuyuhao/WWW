@@ -22,10 +22,12 @@ class BaseAction extends Action {
      * 初始化入口
      */
     function _initialize() {
+		
         if (isLessThenIE9()) {
             $this->display('Public:killie');
             exit;
         }
+		
         if (!session('?member')) {//判断用户是否登陆
             if ($this->isAjax()) {//判断是否是ajax请求
                 header("HTTP/1.1 901 Not Login");
