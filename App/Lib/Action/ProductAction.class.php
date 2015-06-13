@@ -23,15 +23,17 @@ class ProductAction extends BaseAction {
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	
+	//删除
 	public function doupdate() {
 		$did = $_GET['uid'];
-		if ($did) {
-            $Model = D("User");
-			$Model->where('uid = %d', $did)->save(array('ustatus' => 1));
-
-        }
-        $this->returnStatus();
+		$Model = D("Product");
+        $Model->where('pid = %d', $did)->delete();
 		
+		if ($Model->getError()) {
+                $this->returnStatus(false, $Model->getError());
+        }
+		
+        $this->returnStatus();
 	}
 	
 	public function comboData() {
@@ -53,6 +55,10 @@ class ProductAction extends BaseAction {
             }
             $this->returnStatus();
         }
+    }
+	
+	public function doDelete() {
+
     }
 
 }
