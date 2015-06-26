@@ -17,7 +17,8 @@
 		//alert("两次密码输入不相同！");
 		//return false;
 		//}
-			//$('#ff').submit(); 
+		$('#ff').submit(); 
+		alert("新增公告成功，请继续添加需要竞价的产品！");
 		$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/addproduct');
 		}
 		function clearForm(){
@@ -46,12 +47,12 @@
 		
 	</script>
 	
-	<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe> 
+<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe> 
 
 <center>
 	<h2>发布竞价公告</h2>
 	<p></p>
-	<form method="post" id="ff" action="/grxx/saveuser" target="id_iframe"  enctype="multipart/form-data">  
+	<form method="post" id="ff" action="/news/save"  target="id_iframe"   enctype="multipart/form-data">  
 	<div style="margin:20px 0;"></div>
 	<div class="easyui-panel" title="发布竞价公告" style="width:400px;padding:30px 60px">
 		<div style="margin-bottom:20px">
@@ -66,9 +67,9 @@
 	
 	<div style="margin:20px 0;"></div>
   <div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">竞价开始时间：</div>	
-  <input class="easyui-datetimebox"  style="width:200px;"> </input>
+  <input class="easyui-datetimebox"  style="width:200px;" name="newsstart" id="newsstart"> </input>
   <div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">竞价结束时间：</div>	
-    <input class="easyui-datetimebox"  style="width:200px;"> </input>
+    <input class="easyui-datetimebox"  style="width:200px;" name="newsend" id="newssend"> </input>
 	<div style="margin:20px 0;"></div>
 		
 		<div>

@@ -2,16 +2,16 @@
 context.ready = function() {
     $grid.datagrid({
         fit: true,
-        idField: 'pid',
+        idField: 'npid',
         url: _ROOT_ + '/news/getData',
         pagination: true,
         columns: [[
                 {checkbox: true},
                 {field: 'pname', title: '产品名称', width: 200, align: 'center'},
                 {field: 'punit', title: '产品单位', width: 130, align: 'center'},
-				{field: 'punit', title: '产品数量', width: 130, align: 'center'},
-				{field: 'punit', title: '备注信息', width: 300, align: 'center'},
-                {field: 'pid', title: '删除操作', width: 100, align: 'center', formatter: function(value) {
+				{field: 'npcount', title: '产品数量', width: 130, align: 'center'},
+				{field: 'npdetail', title: '备注信息', width: 300, align: 'center'},
+                {field: 'npid', title: '删除操作', width: 100, align: 'center', formatter: function(value) {
                         return '<span title="删除" class="img-btn icon-remove" pid=' + value + '></span>';
                     }}
             ]],
@@ -75,7 +75,7 @@ var doDelete = function() {
 
 var doSubmit = function() {
     $bt_unit_from = $('#bt_unit_from');
-        $.post(_ROOT_ + '/product/doSave', $bt_unit_from.toJson(), function(rsp) {
+        $.post(_ROOT_ + '/news/doSave', $bt_unit_from.toJson(), function(rsp) {
             if (rsp.status) {
                 $grid.datagrid('reload');
                 viewDialog.dialog('close');
