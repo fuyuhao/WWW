@@ -27,8 +27,6 @@ class NewsAction extends BaseAction {
 		$nid = session('nid');
         $dataList = $TypeModel->join('bt_product ON bt_product.pid=bt_news_product.pid')->where('nid = %d', $nid)->select();
         $this->returnGridData($dataList, $TypeModel->count());
-		
-
     }
 	
 	public function doSave() {
@@ -48,8 +46,6 @@ class NewsAction extends BaseAction {
 	$file->add();
 	$this->returnStatus();
 	}
-
-	
 	
 	public function save() {
 	$file = M('News');
@@ -61,10 +57,87 @@ class NewsAction extends BaseAction {
 	$file->ntext=$newscontent;
 	$file->nstart=$newsstart;
 	$file->nend=$newsend;
+	$file->nround="1";
 	$lastInsId=$file->add(); 
 	
 	session('nid',$lastInsId);
-	
 	}
+	
+	public function index() {
+		$this->display();
+	}
+	
+	public function newsgetData() {
+        $TypeModel = D('News');
+        $dataList = $TypeModel->select();
+        $this->returnGridData($dataList, $TypeModel->count());
+    }
+	
+	public function getdetail() {
+		$nid = $_GET['nid'];
+		$TypeModel = D('News');
+		$condition['nid'] = $nid;
+		$this->data=$TypeModel->where($condition)->select();
+		$this->display();
+	}
+	
+	public function addprice() {
+		$nid = $_GET['nid'];
+		session('nid',$nid);
+		$this->display();
+	}
+	
+	public function getPriceData() {
+        $TypeModel = M('NewsProduct');
+		$nid = session('nid');
+        $dataList = $TypeModel->join('LEFT JOIN bt_product b ON b.pid=bt_news_product.pid')->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid')->where('bt_news_product.nid = %d', $nid)->select();
+		
+        $this->returnGridData($dataList, $TypeModel->count());
+    }
+	
+		
+	public function dialogprice() {
+		$pid = $_GET['pid'];
+		$this->myid=$pid;
+		$nid = session('nid');
+		$this->nid=$nid;
+		$TypeModel = D('News');
+		$condition['nid'] = $nid;
+		$nround=$TypeModel->where($condition)->getField('nround');
+		$this->pround=$nround;
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
+
+		$this->uid=$uid;
+		$this->display();
+	}
+	
+	public function saveprice() {
+		$pid = $_POST['myid'];
+		$prate = $_POST['prate'];
+		$nid = $_POST['nid'];
+		$uid = $_POST['uid'];
+		
+		$pround = $_POST['pround'];
+		
+		$file = M('Price');
+		$file->prate=$prate;
+		$file->pid=$pid;
+		$file->pround=$pround;
+		$file->nid=$nid;
+		$file->uid=$uid;
+		$file->add(); 
+		$this->returnStatus();
+	}
+	
+	public function newsfilter() {
+		$this->display();
+	}
+	
+	public function userfilter() {
+		$this->display();
+	}
+	
+	
 }
 ?>
