@@ -21,29 +21,24 @@
     <body>
         <div id="bt_loading" class="loading"></div>
         <div id="bt_loading_progress" class="progress">执行中...</div><?php endif; ?>
-<table id="bt_userfilter_grid"></table>
-<script type="text/javascript"> NameSpace("BT.USER", function() { var context = this; ﻿var $grid = $('#bt_userfilter_grid'), viewDialog, $typeGrid;
+<table id="bt_newswin_grid"></table>
+<script type="text/javascript"> NameSpace("BT.PRICE", function() { var context = this; ﻿var $grid = $('#bt_newswin_grid'), viewDialog, $typeGrid;
 context.ready = function() {
     $grid.datagrid({
         fit: true,
-        idField: 'uid',
-        url: _ROOT_ + '/gys/getData',
+        idField: 'nid',
+        url: _ROOT_ + '/news/wingetData',
         pagination: true,
         columns: [[
                 {checkbox: true},
-                {field: 'uname', title: '名字', width: 90, align: 'center'},
-                {field: 'account', title: '账号', width: 130, align: 'center'},
-                {field: 'mail', title: '邮箱', width: 130, align: 'center'},
-                {field: 'ustatus', title: '审核状态', width: 70, align: 'center', formatter: function(value) {
-                        if (value === '1') {
-                            return '已审核';
-                        }
-                        return '<font color="red">未审核</font>';
-                    }},
-                {field: 'uid', title: '操作', width: 100, align: 'center', formatter: function(value) {
-						var ctrs = ['<span  title="中标" class="img-btn icon-tip" type="detail" uid=' + value + '></span>', '<span title="删除" class="img-btn icon-remove" type="check" uid=' + value + '></span>'];
+                {field: 'ntitle', title: '公告标题', width: 130, align: 'center'},
+                {field: 'ntext', title: '公告内容', width: 130, align: 'center'},
+				{field: 'nstart', title: '开始时间', width: 130, align: 'center'},
+				{field: 'nend', title: '结束时间', width: 130, align: 'center'},
+				{field: 'nround', title: '竞价轮次', width: 130, align: 'center'},
+                {field: 'nid', title: '操作', width: 100, align: 'center', formatter: function(value) {
+						var ctrs = ['<span  title="详情" class="img-btn icon-tip" type="detail" nid=' + value + '></span>', '<span title="竞价" class="img-btn icon-ok" type="check" nid=' + value + '></span>'];
                         return ctrs.join(' ');
-						
                     }}
             ]],
         toolbar: [{
@@ -61,54 +56,45 @@ context.ready = function() {
             }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
-			
-            $bodyView.find('span[uid]').click(function(e) {
+            $bodyView.find('span[nid]').click(function(e) {
 				var type = $(this).attr('type');
                 e.stopPropagation();
-                var uid = $(this).attr('uid');
+                var uid = $(this).attr('nid');
                 if (type === 'check') {
                     context.updateView(uid);
                 } else {
                     context.mydetail(uid);
                 }
             });
-			
         }
     });
 };
 
 var addView = function() {
-
+    viewDialog = $.dialog({
+        title: '产品添加',
+        href: _ROOT_ + '/news/add',
+        width: 300,
+        bodyStyle: {overflow: 'hidden'},
+        height: 200,
+        buttons: [{
+                text: '提交',
+                handler: doSubmit
+            }]
+    });
 };
+
+
 context.updateView = function(uid) {
-	
-	$.confirm('确认删除？', function(r) {
-        if (r) {
-            $.get(_ROOT_ + '/news/addfilter?uid=' + uid, function(rsp) {
-            if (rsp.status) {
-                $grid.datagrid('reload');
-            } else {
-                $.alert(rsp.msg);
-                }
-            }, 'JSON');
-            }
-        });
+
+	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/userfilter?nid=' + uid);
 	
 };
 
 context.mydetail = function(uid) {
 	
-	$.confirm('确认中标？', function(r) {
-        if (r) {
-            $.get(_ROOT_ + '/news/newswin?uid=' + uid, function(rsp) {
-            if (rsp.status) {
-                $grid.datagrid('reload');
-            } else {
-                $.alert(rsp.msg);
-                }
-            }, 'JSON');
-            }
-        });
+	var myurl=_ROOT_ + '/news/getdetail?nid=' + uid
+    window.open(myurl);    
 	
 };
 
@@ -119,7 +105,15 @@ var doDelete = function() {
 };
 
 var doSubmit = function() {
-
+    $bt_unit_from = $('#bt_unit_from');
+        $.post(_ROOT_ + '/news/doSave', $bt_unit_from.toJson(), function(rsp) {
+            if (rsp.status) {
+                $grid.datagrid('reload');
+                viewDialog.dialog('close');
+            } else {
+                $.alert(rsp.msg);
+            }
+        }, "JSON");
 };
 var typeView = function() {
 

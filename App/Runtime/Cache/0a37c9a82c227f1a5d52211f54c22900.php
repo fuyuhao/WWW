@@ -16,4 +16,5 @@
    <input type="hidden" name="nid" value="<?php echo ($nid); ?>">
    <input type="hidden" name="uid" value="<?php echo ($uid); ?>">
    <input type="hidden" name="pround" value="<?php echo ($pround); ?>">
+   <input type="hidden" name="npcount" value="<?php echo ($npcount); ?>">
 </form>

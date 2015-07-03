@@ -28,7 +28,7 @@ context.ready = function() {
     $grid.datagrid({
         fit: true,
         idField: 'nid',
-        url: _ROOT_ + '/news/newsgetData',
+        url: _ROOT_ + '/news/getfilterData',
         pagination: true,
         columns: [[
                 {checkbox: true},

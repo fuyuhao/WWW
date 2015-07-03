@@ -1,0 +1,19 @@
+﻿<?php
+
+/**
+ * 作者：anticode
+ * 
+ * 
+ */
+
+/**
+ * DictModel
+ *
+ * @author anticode
+ */
+
+class NewsWinModel extends Model{
+
+}
+
+?>

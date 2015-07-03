@@ -38,6 +38,11 @@ class NewsAction extends BaseAction {
 	$pcount = $_POST['pcount'];
 	$pdetail = $_POST['pdetail'];
 	$nid = session('nid');
+	
+	$TypeModel = D('Product');
+	$condition['pid'] = $pid;
+	$pname=$TypeModel->where($condition)->getField('pname');
+	$file->pname=$pname;
 	$file->pid=$pid;
 	$file->punit=$punit;
 	$file->npcount=$pcount;
@@ -69,7 +74,8 @@ class NewsAction extends BaseAction {
 	
 	public function newsgetData() {
         $TypeModel = D('News');
-        $dataList = $TypeModel->select();
+		$current  = "unix_timestamp(nstart) < unix_timestamp(NOW()) and unix_timestamp(nend) > unix_timestamp(NOW())";  
+        $dataList = $TypeModel->where($current)->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	
@@ -88,10 +94,13 @@ class NewsAction extends BaseAction {
 	}
 	
 	public function getPriceData() {
-        $TypeModel = M('NewsProduct');
+		//$nid = session('nid');
+        //$TypeModel = M('NewsProduct');
+        //$dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid')->where('bt_news_product.nid = %d', $nid)->select();
+				
 		$nid = session('nid');
-        $dataList = $TypeModel->join('LEFT JOIN bt_product b ON b.pid=bt_news_product.pid')->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid')->where('bt_news_product.nid = %d', $nid)->select();
-		
+        $TypeModel = M('NewsProduct');
+        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->where('bt_news_product.nid = %d', $nid)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate'))->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	
@@ -107,8 +116,14 @@ class NewsAction extends BaseAction {
 		$this->pround=$nround;
 		$memberInfo = session('member');
 		$uid=$memberInfo['uid'];
-
 		$this->uid=$uid;
+		
+		$TypeModel = D('NewsProduct');
+		$condition= "pid=".$pid." and nid=".$nid;  
+		$npcount=$TypeModel->where($condition)->getField('npcount');
+		$this->npcount=$npcount;
+		//dump($condition);
+
 		$this->display();
 	}
 	
@@ -117,26 +132,69 @@ class NewsAction extends BaseAction {
 		$prate = $_POST['prate'];
 		$nid = $_POST['nid'];
 		$uid = $_POST['uid'];
-		
+		$npcount = $_POST['npcount'];
 		$pround = $_POST['pround'];
-		
+		//dump($npcount);
 		$file = M('Price');
 		$file->prate=$prate;
 		$file->pid=$pid;
 		$file->pround=$pround;
 		$file->nid=$nid;
 		$file->uid=$uid;
+		$file->sumrate=number_format($prate*$npcount, 2, '.', '');;
 		$file->add(); 
 		$this->returnStatus();
 	}
+	
+	public function getfilterData() {
+        $TypeModel = D('News');
+		$current  = "unix_timestamp(nend) < unix_timestamp(NOW())";  
+        $dataList = $TypeModel->where($current)->select();
+        $this->returnGridData($dataList, $TypeModel->count());
+    }
 	
 	public function newsfilter() {
 		$this->display();
 	}
 	
 	public function userfilter() {
+		$nid = $_GET['nid'];
+		session('nid',$nid);
 		$this->display();
 	}
+	
+	public function addfilter() {
+		$uid = $_GET['uid'];
+		$nid = session('nid');
+		$file = M('NewsFilter');
+		$file->uid=$uid;
+		$file->nid=$nid;
+		$file->add(); 
+		$this->returnStatus();
+	}
+	
+	public function newswin() {
+		$uid = $_GET['uid'];
+		$nid = session('nid');
+		$file = M('NewsWin');
+		$file->uid=$uid;
+		$file->nid=$nid;
+		$file->add(); 
+		$this->returnStatus();
+	}
+	
+	public function newsresult() {
+		$this->display();
+	}
+	
+	public function wingetData() {
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
+		$TypeModel = M('NewsWin');
+		$dataList = $TypeModel->join('bt_news ON bt_news.nid=bt_news_win.nid')->where('bt_news_win.uid = %d', $uid)->select();
+        $this->returnGridData($dataList, $TypeModel->count());
+	}
+	
 	
 	
 }

@@ -1,9 +1,9 @@
-﻿var $grid = $('#bt_newsfilter_grid'), viewDialog, $typeGrid;
+﻿var $grid = $('#bt_newswin_grid'), viewDialog, $typeGrid;
 context.ready = function() {
     $grid.datagrid({
         fit: true,
         idField: 'nid',
-        url: _ROOT_ + '/news/getfilterData',
+        url: _ROOT_ + '/news/wingetData',
         pagination: true,
         columns: [[
                 {checkbox: true},

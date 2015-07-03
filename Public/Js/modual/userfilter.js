@@ -17,7 +17,7 @@ context.ready = function() {
                         return '<font color="red">未审核</font>';
                     }},
                 {field: 'uid', title: '操作', width: 100, align: 'center', formatter: function(value) {
-						var ctrs = ['<span  title="详情" class="img-btn icon-tip" type="detail" uid=' + value + '></span>', '<span title="删除" class="img-btn icon-remove" type="check" uid=' + value + '></span>'];
+						var ctrs = ['<span  title="中标" class="img-btn icon-tip" type="detail" uid=' + value + '></span>', '<span title="删除" class="img-btn icon-remove" type="check" uid=' + value + '></span>'];
                         return ctrs.join(' ');
 						
                     }}
@@ -60,7 +60,7 @@ context.updateView = function(uid) {
 	
 	$.confirm('确认删除？', function(r) {
         if (r) {
-            $.get(_ROOT_ + '/news/doupdate?uid=' + uid, function(rsp) {
+            $.get(_ROOT_ + '/news/addfilter?uid=' + uid, function(rsp) {
             if (rsp.status) {
                 $grid.datagrid('reload');
             } else {
@@ -74,8 +74,17 @@ context.updateView = function(uid) {
 
 context.mydetail = function(uid) {
 	
-	var myurl=_ROOT_ + '/gys/getdetail?uid=' + uid
-    window.open(myurl);    
+	$.confirm('确认中标？', function(r) {
+        if (r) {
+            $.get(_ROOT_ + '/news/newswin?uid=' + uid, function(rsp) {
+            if (rsp.status) {
+                $grid.datagrid('reload');
+            } else {
+                $.alert(rsp.msg);
+                }
+            }, 'JSON');
+            }
+        });
 	
 };
 
