@@ -73,8 +73,10 @@ class NewsAction extends BaseAction {
 	}
 	
 	public function newsgetData() {
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
         $TypeModel = D('News');
-		$current  = "unix_timestamp(nstart) < unix_timestamp(NOW()) and unix_timestamp(nend) > unix_timestamp(NOW())";  
+		$current  = "unix_timestamp(nstart) < unix_timestamp(NOW()) and unix_timestamp(nend) > unix_timestamp(NOW()) and nid NOT IN (select nid from bt_news_filter where uid=".$uid.")";
         $dataList = $TypeModel->where($current)->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
@@ -148,7 +150,7 @@ class NewsAction extends BaseAction {
 	
 	public function getfilterData() {
         $TypeModel = D('News');
-		$current  = "unix_timestamp(nend) < unix_timestamp(NOW())";  
+		$current  = "unix_timestamp(nend) < unix_timestamp(NOW()) or unix_timestamp(nstart) > unix_timestamp(NOW())";  
         $dataList = $TypeModel->where($current)->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
