@@ -19,11 +19,11 @@ class PublicAction extends Action {
         $password = $_POST['password'];
 
         if ($type == 0 && $acccount == C('SYSYTEM_USER_NAME') && $password == C('SYSYTEM_USER_PWD')) {
-            session('member', array('uid' => 0, 'uname' => 'SYSTEM'));
+            session('member', array('uid' => 0, 'uname' => 'SYSTEM','ustatus' => 0));
             $this->ajaxReturn(array('status' => true));
         } else {
             $Mode = D('User');
-            $data = $Mode->field('uid,uname,account,mail')->where(array('account' => $acccount, 'password' => pwdHash($password)))->find();
+            $data = $Mode->field('uid,uname,account,mail,ustatus')->where(array('account' => $acccount, 'password' => pwdHash($password)))->find();
             if (empty($data)) {
                 $this->ajaxReturn(array('status' => false, 'msg' => '用户名或密码错误！'));
             }

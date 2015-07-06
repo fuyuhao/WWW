@@ -16,8 +16,15 @@ class IndexAction extends BaseAction {
     public function index() {
         $memberInfo = session('member');
         $Menu = D('Menu');
+		
+		if ($memberInfo['ustatus'] == 0) {
+		$mymenu="mid<>96 and mid<>95 and mid<>94 and mid<>97 and mid<>98 and mid<>99 and mid<>104";
+		} else {
+		$mymenu="mid<>96 and mid<>95 and mid<>94 and mid<>97 and mid<>98 and mid<>99 and mid<>100 and mid<>101 and mid<>103 and mid<>105";
+		}	
+		$dataList = $Menu->where($mymenu)->order('seq asc')->select();
         //if ($memberInfo['uid'] == 0) {
-            $dataList = $Menu->order('seq asc')->select();
+           // $dataList = $Menu->order('seq asc')->select();
         //} else {
         //    $dataList = $Menu->getMenuDataByUid($memberInfo['uid']);
         //}

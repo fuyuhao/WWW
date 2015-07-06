@@ -101,8 +101,11 @@ class NewsAction extends BaseAction {
         //$dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid')->where('bt_news_product.nid = %d', $nid)->select();
 				
 		$nid = session('nid');
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
         $TypeModel = M('NewsProduct');
-        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->where('bt_news_product.nid = %d', $nid)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate'))->select();
+		$myprice="bt_news_product.nid=".$nid;
+        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid and a.uid='.$uid)->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate'))->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	
@@ -136,16 +139,26 @@ class NewsAction extends BaseAction {
 		$uid = $_POST['uid'];
 		$npcount = $_POST['npcount'];
 		$pround = $_POST['pround'];
+		$sumrate=number_format($prate*$npcount, 2, '.', '');
 		//dump($npcount);
 		$file = M('Price');
-		$file->prate=$prate;
+		
+		$myprice="pid=".$pid." and uid=".$uid." and pround=".$pround." and nid=".$nid;
+		$data = $file->where($myprice)->find();
+        if (empty($data)) {
+        $file->prate=$prate;
 		$file->pid=$pid;
 		$file->pround=$pround;
 		$file->nid=$nid;
 		$file->uid=$uid;
-		$file->sumrate=number_format($prate*$npcount, 2, '.', '');;
+		$file->sumrate=$sumrate;
 		$file->add(); 
 		$this->returnStatus();
+		}else{
+		$file->where($myprice)->setField('prate',$prate);
+		$file->where($myprice)->setField('sumrate',$sumrate);
+		$this->returnStatus();	
+        }
 	}
 	
 	public function getfilterData() {
