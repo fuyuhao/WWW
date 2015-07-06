@@ -18,7 +18,7 @@ context.ready = function() {
                     }}
             ]],
         toolbar: [{
-                text: '新增',
+                text: '导出',
                 iconCls: 'icon-add',
                 handler: addView
             }, {
@@ -42,18 +42,12 @@ context.ready = function() {
 };
 
 var addView = function() {
-    viewDialog = $.dialog({
-        title: '产品添加',
-        href: _ROOT_ + '/news/add',
-        width: 300,
-        bodyStyle: {overflow: 'hidden'},
-        height: 200,
-        buttons: [{
-                text: '提交',
-                handler: doSubmit
-            }]
-    });
+	getFile('/news/myexport',$("#bt_addprice_grid").serialize());
 };
+
+function getFile(address,parameters){
+	window.location='news/myexport';
+}
 
 
 var updateView = function(pid) {
@@ -101,4 +95,7 @@ var doTypeDelete = function() {
 var doTypeSave = function() {
 
 };
+
+
+
 

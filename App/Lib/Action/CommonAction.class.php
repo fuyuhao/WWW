@@ -16,6 +16,8 @@ class CommonAction extends BaseAction {
     public function chooseUser() {
         $this->display('chooseuser');
     }
+	
+	
 
 }
 
