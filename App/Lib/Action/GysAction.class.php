@@ -19,7 +19,8 @@ class GysAction extends BaseAction {
 	
 	public function getData() {
         $TypeModel = D('UserView');
-        $dataList = $TypeModel->order('ustatus asc')->select();
+		$mygys="ustatus>0";
+        $dataList = $TypeModel->where($mygys)->order('ustatus desc')->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	

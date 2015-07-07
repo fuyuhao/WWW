@@ -30,7 +30,7 @@ class RegisterAction extends Action {
 		$file->uname=$account;
 		$file->password=pwdHash($password);
 		$file->mail=$account;
-		$file->ustatus=0;
+		$file->ustatus=2;
 		$file->imgfile1 = $info[0]["savename"];
 		$file->imgfile2 = $info[1]["savename"];
 		$file->imgfile3 = $info[2]["savename"];

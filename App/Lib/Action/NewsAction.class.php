@@ -267,6 +267,24 @@ class NewsAction extends BaseAction {
         $this->exportExcel($xlsName,$xlsCell,$xlsData);
 	}
 	
+	public function allprice(){
+		$this->display();
+	}
+	
+	public function getallPrice() {
+		//$nid = session('nid');
+        //$TypeModel = M('NewsProduct');
+        //$dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid')->where('bt_news_product.nid = %d', $nid)->select();
+				
+		$nid = session('nid');
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
+        $TypeModel = M('NewsProduct');
+		$myprice="bt_news_product.nid=".$nid;
+        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->join('LEFT JOIN bt_user b ON b.uid=a.uid')->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate','b.uname'=>'uname'))->order('uname desc')->select();
+        $this->returnGridData($dataList, $TypeModel->count());
+    }
+	
 	
 }
 ?>

@@ -21,33 +21,29 @@
     <body>
         <div id="bt_loading" class="loading"></div>
         <div id="bt_loading_progress" class="progress">执行中...</div><?php endif; ?>
-<table id="bt_userfilter_grid"></table>
-<script type="text/javascript"> NameSpace("BT.USER", function() { var context = this; ﻿var $grid = $('#bt_userfilter_grid'), viewDialog, $typeGrid;
+<table id="bt_allprice_grid"></table>
+<script type="text/javascript"> NameSpace("BT.PRICE", function() { var context = this; ﻿var $grid = $('#bt_allprice_grid'), viewDialog, $typeGrid;
 context.ready = function() {
     $grid.datagrid({
         fit: true,
-        idField: 'uid',
-        url: _ROOT_ + '/gys/getData',
+        idField: 'pid',
+        url: _ROOT_ + '/news/getallPrice',
         pagination: true,
         columns: [[
                 {checkbox: true},
-                {field: 'uname', title: '名字', width: 90, align: 'center'},
-                {field: 'account', title: '账号', width: 130, align: 'center'},
-                {field: 'mail', title: '邮箱', width: 130, align: 'center'},
-                {field: 'ustatus', title: '审核状态', width: 70, align: 'center', formatter: function(value) {
-                        if (value === '1') {
-                            return '已审核';
-                        }
-                        return '<font color="red">未审核</font>';
-                    }},
-                {field: 'uid', title: '操作', width: 100, align: 'center', formatter: function(value) {
-						var ctrs = ['<span  title="中标" class="img-btn icon-tip" type="detail" uid=' + value + '></span>', '<span title="删除" class="img-btn icon-remove" type="check" uid=' + value + '></span>'];
-                        return ctrs.join(' ');
-						
+				{field: 'uname', title: '供应商名称', width: 130, align: 'center'},
+                {field: 'pname', title: '产品名称', width: 130, align: 'center'},
+                {field: 'punit', title: '产品单位', width: 130, align: 'center'},
+				{field: 'npcount', title: '产品数量', width: 130, align: 'center'},
+				{field: 'npdetail', title: '备注信息', width: 200, align: 'center'},
+				{field: 'prate', title: '产品单价', width: 130, align: 'center'},
+				{field: 'sumrate', title: '产品金额', width: 130, align: 'center'},
+                {field: 'pid', title: '报价操作', width: 100, align: 'center', formatter: function(value) {
+                        return '<span title="报价" class="img-btn icon-edit" pid=' + value + '></span>';
                     }}
             ]],
         toolbar: [{
-                text: '所有报价',
+                text: '导出',
                 iconCls: 'icon-add',
                 handler: addView
             }, {
@@ -61,66 +57,53 @@ context.ready = function() {
             }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
-			
-            $bodyView.find('span[uid]').click(function(e) {
-				var type = $(this).attr('type');
+            $bodyView.find('span[pid]').click(function(e) {
                 e.stopPropagation();
-                var uid = $(this).attr('uid');
-                if (type === 'check') {
-                    context.updateView(uid);
-                } else {
-                    context.mydetail(uid);
-                }
+                var pid = $(this).attr('pid');
+                updateView(pid);
             });
-			
         }
     });
 };
 
 var addView = function() {
-	var myurl=_ROOT_ + '/news/allprice'
-    window.open(myurl);        
-};
-context.updateView = function(uid) {
-	
-	$.confirm('确认删除？', function(r) {
-        if (r) {
-            $.get(_ROOT_ + '/news/addfilter?uid=' + uid, function(rsp) {
-            if (rsp.status) {
-                $grid.datagrid('reload');
-            } else {
-                $.alert(rsp.msg);
-                }
-            }, 'JSON');
-            }
-        });
-	
+	getFile('/news/myexport',$("#bt_addprice_grid").serialize());
 };
 
-context.mydetail = function(uid) {
+function getFile(address,parameters){
+	window.location='news/myexport';
+}
+
+
+var updateView = function(pid) {
 	
-	$.confirm('确认中标？', function(r) {
-        if (r) {
-            $.get(_ROOT_ + '/news/newswin?uid=' + uid, function(rsp) {
-            if (rsp.status) {
-                $grid.datagrid('reload');
-            } else {
-                $.alert(rsp.msg);
-                }
-            }, 'JSON');
-            }
-        });
+    viewDialog = $.dialog({
+        title: '产品报价',
+        href: _ROOT_ + '/news/dialogprice?pid=' + pid,
+        width: 300,
+        bodyStyle: {overflow: 'hidden'},
+        height: 200,
+        buttons: [{
+                text: '提交',
+                handler: doSubmit
+            }]
+    });
 	
 };
-
-
-
 var doDelete = function() {
 
 };
 
 var doSubmit = function() {
-
+    $bt_unit_from = $('#bt_price_from');
+        $.post(_ROOT_ + '/news/saveprice', $bt_unit_from.toJson(), function(rsp) {
+            if (rsp.status) {
+                $grid.datagrid('reload');
+                viewDialog.dialog('close');
+            } else {
+                $.alert(rsp.msg);
+            }
+        }, "JSON");
 };
 var typeView = function() {
 
@@ -137,5 +120,8 @@ var doTypeDelete = function() {
 var doTypeSave = function() {
 
 };
+
+
+
 
  }); </script>

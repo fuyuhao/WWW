@@ -23,7 +23,7 @@ context.ready = function() {
                     }}
             ]],
         toolbar: [{
-                text: '新增',
+                text: '所有报价',
                 iconCls: 'icon-add',
                 handler: addView
             }, {
@@ -54,7 +54,8 @@ context.ready = function() {
 };
 
 var addView = function() {
-
+	var myurl=_ROOT_ + '/news/allprice'
+    window.open(myurl);        
 };
 context.updateView = function(uid) {
 	
