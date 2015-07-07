@@ -21,28 +21,28 @@
     <body>
         <div id="bt_loading" class="loading"></div>
         <div id="bt_loading_progress" class="progress">执行中...</div><?php endif; ?>
-<table id="bt_newswin_grid"></table>
-<script type="text/javascript"> NameSpace("BT.PRICE", function() { var context = this; ﻿var $grid = $('#bt_newswin_grid'), viewDialog, $typeGrid;
+<table id="bt_winresult_grid"></table>
+<script type="text/javascript"> NameSpace("BT.PRICE", function() { var context = this; ﻿var $grid = $('#bt_winresult_grid'), viewDialog, $typeGrid;
 context.ready = function() {
     $grid.datagrid({
         fit: true,
-        idField: 'nid',
-        url: _ROOT_ + '/news/wingetData',
+        idField: 'pid',
+        url: _ROOT_ + '/news/windata',
         pagination: true,
         columns: [[
                 {checkbox: true},
-                {field: 'ntitle', title: '公告标题', width: 130, align: 'center'},
-                {field: 'ntext', title: '公告内容', width: 130, align: 'center'},
-				{field: 'nstart', title: '开始时间', width: 130, align: 'center'},
-				{field: 'nend', title: '结束时间', width: 130, align: 'center'},
-				{field: 'nround', title: '竞价轮次', width: 130, align: 'center'},
-                {field: 'nid', title: '操作', width: 100, align: 'center', formatter: function(value) {
-						var ctrs = ['<span  title="详情" class="img-btn icon-tip" type="detail" nid=' + value + '></span>', '<span title="竞价" class="img-btn icon-ok" type="check" nid=' + value + '></span>'];
-                        return ctrs.join(' ');
+                {field: 'pname', title: '产品名称', width: 130, align: 'center'},
+                {field: 'punit', title: '产品单位', width: 130, align: 'center'},
+				{field: 'npcount', title: '产品数量', width: 130, align: 'center'},
+				{field: 'npdetail', title: '备注信息', width: 200, align: 'center'},
+				{field: 'prate', title: '产品单价', width: 130, align: 'center'},
+				{field: 'sumrate', title: '产品金额', width: 130, align: 'center'},
+                {field: 'pid', title: '报价操作', width: 100, align: 'center', formatter: function(value) {
+                        return '<span title="报价" class="img-btn icon-edit" pid=' + value + '></span>';
                     }}
             ]],
         toolbar: [{
-                text: '新增',
+                text: '导出',
                 iconCls: 'icon-add',
                 handler: addView
             }, {
@@ -56,24 +56,29 @@ context.ready = function() {
             }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
-            $bodyView.find('span[nid]').click(function(e) {
-				var type = $(this).attr('type');
+            $bodyView.find('span[pid]').click(function(e) {
                 e.stopPropagation();
-                var uid = $(this).attr('nid');
-                if (type === 'check') {
-                    context.updateView(uid);
-                } else {
-                    context.mydetail(uid);
-                }
+                var pid = $(this).attr('pid');
+                updateView(pid);
             });
         }
     });
 };
 
 var addView = function() {
+	getFile('/news/myexport',$("#bt_addprice_grid").serialize());
+};
+
+function getFile(address,parameters){
+	window.location='news/myexport';
+}
+
+
+var updateView = function(pid) {
+	
     viewDialog = $.dialog({
-        title: '产品添加',
-        href: _ROOT_ + '/news/add',
+        title: '产品报价',
+        href: _ROOT_ + '/news/dialogprice?pid=' + pid,
         width: 300,
         bodyStyle: {overflow: 'hidden'},
         height: 200,
@@ -82,31 +87,15 @@ var addView = function() {
                 handler: doSubmit
             }]
     });
-};
-
-
-context.updateView = function(uid) {
-
-	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/winresult?nid=' + uid);
 	
 };
-
-context.mydetail = function(uid) {
-	
-	var myurl=_ROOT_ + '/news/getdetail?nid=' + uid
-    window.open(myurl);    
-	
-};
-
-
-
 var doDelete = function() {
 
 };
 
 var doSubmit = function() {
-    $bt_unit_from = $('#bt_unit_from');
-        $.post(_ROOT_ + '/news/doSave', $bt_unit_from.toJson(), function(rsp) {
+    $bt_unit_from = $('#bt_price_from');
+        $.post(_ROOT_ + '/news/saveprice', $bt_unit_from.toJson(), function(rsp) {
             if (rsp.status) {
                 $grid.datagrid('reload');
                 viewDialog.dialog('close');
@@ -130,5 +119,8 @@ var doTypeDelete = function() {
 var doTypeSave = function() {
 
 };
+
+
+
 
  }); </script>

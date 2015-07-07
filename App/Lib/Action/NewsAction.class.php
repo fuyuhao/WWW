@@ -206,9 +206,33 @@ class NewsAction extends BaseAction {
 		$memberInfo = session('member');
 		$uid=$memberInfo['uid'];
 		$TypeModel = M('NewsWin');
+		if ($memberInfo['ustatus'] == 0) {
+		$dataList = $TypeModel->join('bt_news ON bt_news.nid=bt_news_win.nid')->select();
+		} else {
 		$dataList = $TypeModel->join('bt_news ON bt_news.nid=bt_news_win.nid')->where('bt_news_win.uid = %d', $uid)->select();
+		}
+		//$dataList = $TypeModel->join('bt_news ON bt_news.nid=bt_news_win.nid')->where('bt_news_win.uid = %d', $uid)->select();
         $this->returnGridData($dataList, $TypeModel->count());
 	}
+	
+	public function winresult(){
+		$nid = $_GET['nid'];
+		session('nid',$nid);
+		$this->display();
+	}
+	
+	public function windata(){
+		$nid = session('nid');
+		$TypeModel = M('NewsWin');
+		$condition="nid=".$nid;
+		$uid=$TypeModel->where($condition)->getField('uid');
+		//dump($uid);
+		$TypeModel = M('NewsProduct');
+		$myprice="bt_news_product.nid=".$nid;
+        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid and a.uid='.$uid)->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate'))->select();
+		$this->returnGridData($dataList, $TypeModel->count());
+	}
+	
 	
 	public function exportExcel($expTitle,$expCellName,$expTableData){
 		//ob_clean();

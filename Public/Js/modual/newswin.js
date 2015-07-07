@@ -63,7 +63,7 @@ var addView = function() {
 
 context.updateView = function(uid) {
 
-	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/userfilter?nid=' + uid);
+	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/winresult?nid=' + uid);
 	
 };
 
