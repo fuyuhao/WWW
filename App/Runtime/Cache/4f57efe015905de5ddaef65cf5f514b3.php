@@ -31,9 +31,9 @@ context.ready = function() {
         pagination: true,
         columns: [[
                 {checkbox: true},
-                {field: 'uname', title: '名字', width: 90, align: 'center'},
-                {field: 'account', title: '账号', width: 130, align: 'center'},
-                {field: 'mail', title: '邮箱', width: 130, align: 'center'},
+                {field: 'uname', title: '公司名称', width: 90, align: 'center'},
+                {field: 'company', title: '联系人', width: 130, align: 'center'},
+                {field: 'telephone', title: '电话', width: 130, align: 'center'},
                 {field: 'ustatus', title: '审核状态', width: 70, align: 'center', formatter: function(value) {
                         if (value === '1') {
                             return '已审核';
@@ -46,19 +46,19 @@ context.ready = function() {
 						
                     }}
             ]],
-        toolbar: [{
-                text: '新增',
-                iconCls: 'icon-add',
-                handler: addView
-            }, {
-                text: '删除',
-                iconCls: 'icon-remove',
-                handler: doDelete
-            }, '-', {
-                text: '类别管理',
-                iconCls: 'icon-category',
-                handler: typeView
-            }],
+    //   toolbar: [{
+   //             text: '新增',
+    //            iconCls: 'icon-add',
+   //             handler: addView
+   //         }, {
+   //             text: '删除',
+   //             iconCls: 'icon-remove',
+    //            handler: doDelete
+   //         }, '-', {
+    //            text: '类别管理',
+   //             iconCls: 'icon-category',
+   //             handler: typeView
+  //          }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
 			

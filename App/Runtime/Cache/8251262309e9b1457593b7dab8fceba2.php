@@ -94,6 +94,34 @@
 			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">确认密码：</div>
 			<input class="easyui-validatebox  password form-textbox" type="password" name="repassword" id="password2" style="width:100%" required="required">
 		</div>
+		
+		<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">公司名称：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="company" id="company" style="width:100%" required="required">
+		</div>
+		
+	<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">联系人：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="telname" id="telname" style="width:100%" required="required">
+	</div>
+		
+		<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">电话号码：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="telephone" id="telephone" style="width:100%" required="required">
+		</div>
+		
+	<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">公司地址：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="address" id="address" style="width:100%" required="required">
+	</div>
+	
+	<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">电子邮箱：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="email" id="email" style="width:100%" required="required">
+	</div>
+	
+	
+		
 	<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">营业执照：</div>
 	<div style="margin-bottom:20px">
 	<input type="file" onchange="PreviewImage(this,'imgPreview1')" name="image1"/>

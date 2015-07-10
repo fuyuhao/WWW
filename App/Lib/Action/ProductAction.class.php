@@ -60,6 +60,7 @@ class ProductAction extends BaseAction {
 	public function doDelete() {
 
     }
+	
 
 }
 

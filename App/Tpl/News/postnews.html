@@ -75,7 +75,6 @@
 		<div>
 			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">保存</a>
 			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">清除</a>
-			<input type="submit" value="submit"/>  
 		</div>
 	</div>
 	</form>  

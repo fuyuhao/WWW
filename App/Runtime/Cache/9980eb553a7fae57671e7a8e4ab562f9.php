@@ -43,14 +43,14 @@ context.ready = function() {
                 text: '新增',
                 iconCls: 'icon-add',
                 handler: addView
-            }, {
-                text: '删除',
-                iconCls: 'icon-remove',
-                handler: doDelete
-            }, '-', {
-                text: '类别管理',
-                iconCls: 'icon-category',
-                handler: typeView
+ //           }, {
+  //              text: '删除',
+ //               iconCls: 'icon-remove',
+ //               handler: doDelete
+  //          }, '-', {
+  //              text: '类别管理',
+  //              iconCls: 'icon-category',
+  //              handler: typeView
             }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
@@ -82,7 +82,7 @@ var updateView = function(uid) {
 	
 	$.confirm('确认删除?', function(r) {
         if (r) {
-            $.get(_ROOT_ + '/product/doupdate?uid=' + uid, function(rsp) {
+            $.get(_ROOT_ + '/news/donpdel?npid=' + uid, function(rsp) {
             if (rsp.status) {
                 $grid.datagrid('reload');
             } else {

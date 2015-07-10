@@ -25,5 +25,14 @@ class UnittypeAction extends BaseAction {
             $this->returnStatus();
         }
     }
+	
+	    public function dodelete() {
+        $id = $_GET['id'];
+		$Model = D("UnitType");
+		$Model->where("id=".$id)->delete();
+
+
+        $this->returnStatus();
+    }
 }
 ?>

@@ -13,8 +13,13 @@ class RegisterAction extends Action {
 	
 	$account = $_POST['account'];
     $password = $_POST['password'];
-	$this->assign('account',$account);
-	$this->assign('password',$password);
+	$uname = $_POST['company'];
+	$company = $_POST['telname'];
+	$telephone = $_POST['telephone'];
+	$address = $_POST['address'];
+	$mail = $_POST['email'];
+	//$this->assign('account',$account);
+	//$this->assign('password',$password);
 	
 	if(!$upload->upload()) {
 	$this->error($upload->getErrorMsg());
@@ -27,9 +32,13 @@ class RegisterAction extends Action {
         $this->returnStatus(false, $file->getError());
     } else {
 		$file->account=$account;
-		$file->uname=$account;
+		$file->uname=$uname;
 		$file->password=pwdHash($password);
-		$file->mail=$account;
+		$file->company=$company;
+		$file->telephone=$telephone;
+		$file->address=$address;
+		$file->mail=$mail;
+		
 		$file->ustatus=2;
 		$file->imgfile1 = $info[0]["savename"];
 		$file->imgfile2 = $info[1]["savename"];

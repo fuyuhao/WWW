@@ -2,7 +2,7 @@
 context.ready = function() {
     $grid.datagrid({
         fit: true,
-        idField: 'pid',
+        idField: 'priceid',
         url: _ROOT_ + '/news/getallPrice',
         pagination: true,
         columns: [[
@@ -14,23 +14,23 @@ context.ready = function() {
 				{field: 'npdetail', title: '备注信息', width: 200, align: 'center'},
 				{field: 'prate', title: '产品单价', width: 130, align: 'center'},
 				{field: 'sumrate', title: '产品金额', width: 130, align: 'center'},
-                {field: 'pid', title: '报价操作', width: 100, align: 'center', formatter: function(value) {
-                        return '<span title="报价" class="img-btn icon-edit" pid=' + value + '></span>';
+                {field: 'priceid', title: '中标操作', width: 100, align: 'center', formatter: function(value) {
+                        return '<span title="中标" class="img-btn icon-edit" pid=' + value + '></span>';
                     }}
             ]],
-        toolbar: [{
-                text: '导出',
-                iconCls: 'icon-add',
-                handler: addView
-            }, {
-                text: '删除',
-                iconCls: 'icon-remove',
-                handler: doDelete
-            }, '-', {
-                text: '类别管理',
-                iconCls: 'icon-category',
-                handler: typeView
-            }],
+   //     toolbar: [{
+   //             text: '导出',
+   //             iconCls: 'icon-add',
+   //             handler: addView
+  //          }, {
+ //               text: '删除',
+  //              iconCls: 'icon-remove',
+  //              handler: doDelete
+//            }, '-', {
+ //               text: '类别管理',
+  //              iconCls: 'icon-category',
+ //               handler: typeView
+  //          }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
             $bodyView.find('span[pid]').click(function(e) {
@@ -53,17 +53,18 @@ function getFile(address,parameters){
 
 var updateView = function(pid) {
 	
-    viewDialog = $.dialog({
-        title: '产品报价',
-        href: _ROOT_ + '/news/dialogprice?pid=' + pid,
-        width: 300,
-        bodyStyle: {overflow: 'hidden'},
-        height: 200,
-        buttons: [{
-                text: '提交',
-                handler: doSubmit
-            }]
-    });
+	$.confirm('确认中标？', function(r) {
+        if (r) {
+            $.get(_ROOT_ + '/news/newswin?priceid=' + pid, function(rsp) {
+            if (rsp.status) {
+				alert("中标已选！请到中标项目中查看！");
+                $grid.datagrid('reload');
+            } else {
+                $.alert(rsp.msg);
+                }
+            }, 'JSON');
+            }
+        });
 	
 };
 var doDelete = function() {

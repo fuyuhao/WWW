@@ -5,17 +5,18 @@
 
 		function submitForm(){
 		//var userName= document.getElementById("account").value;
-		//var pwd = document.getElementById("password1").value;
-		//var repwd = document.getElementById("password2").value;
-		//if(userName==""||pwd==""||repwd==""){
-		//alert("请填写必填项！");
-		//return false;
-		//}
-		//if (pwd != repwd) {
-		//alert("两次密码输入不相同！");
-		//return false;
-		//}
+		var pwd = document.getElementById("password").value;
+		var repwd = document.getElementById("password2").value;
+		if(pwd==""||repwd==""){
+		alert("密码必须填写！");
+		return false;
+		}
+		if (pwd != repwd) {
+		alert("两次密码输入不相同！");
+		return false;
+		}
 			$('#ff').submit(); 
+			alert("修改成功！");
 		}
 		function clearForm(){
 			$('#ff').form('clear');
@@ -37,6 +38,7 @@
 		
 	function doSubmit() {
 		$('#bt_upimage_from').submit();
+		alert("上传成功！");
 		viewDialog.dialog('close');
 	}
 
@@ -56,20 +58,41 @@
 	<div class="easyui-panel" title="修改个人信息" style="width:400px;padding:30px 60px">
 		<div style="margin-bottom:20px">
 			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">密码：</div>
-			<input class="easyui-validatebox  password form-textbox" type="password" name="password" id="password1" style="width:100%" >
+			<input class="easyui-validatebox  password form-textbox" type="password" name="password" id="password" style="width:100%" >
 		</div>
 		
 		<div style="margin-bottom:20px">
 			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">确认密码：</div>
 			<input class="easyui-validatebox  password form-textbox" type="password" name="repassword" id="password2" style="width:100%" >
 		</div>
-	
-		<div style="margin-bottom:20px">
-			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">邮箱地址：</div>
-			<input class="easyui-validatebox form-textbox" type="text" name="mymail" style="width:100%" id="mymail" >
-		</div>
-	
 	<volist name="data" id="vo">	
+		<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">电子邮箱：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="mymail" style="width:100%" id="mymail" value={$vo.mail} >
+		</div>
+		
+				<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">公司名称：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="company" id="company" style="width:100%" required="required" value={$vo.uname}>
+		</div>
+		
+	<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">联系人：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="telname" id="telname" style="width:100%" value={$vo.company}>
+	</div>
+		
+		<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">电话号码：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="telephone" id="telephone" style="width:100%" required="required" value={$vo.telephone}>
+		</div>
+		
+	<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">公司地址：</div>
+			<input class="easyui-validatebox form-textbox" type="text" name="address" id="address" style="width:100%" required="required" value={$vo.address}>
+	</div>
+	
+	
+
 	<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">营业执照：</div>
 	<div style="margin-bottom:20px">
 		<a href=__UPLOADS__/{$vo.imgfile1} target="_blank" >查看图片</a>
@@ -103,7 +126,7 @@
 		<div>
 			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">保存</a>
 			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">清除</a>
-			<input type="submit" value="submit"/>  
+			
 		</div>
 	</div>
 	</form>  

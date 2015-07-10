@@ -52,6 +52,14 @@ class NewsAction extends BaseAction {
 	$this->returnStatus();
 	}
 	
+	public function donpdel() {
+		$npid = $_GET['npid'];
+		//dump($npid);
+		$Model = D("NewsProduct");
+        $Model->where('npid = %d', $npid)->delete();
+		$this->returnStatus();
+    }
+	
 	public function save() {
 	$file = M('News');
 	$mydetail = $_POST['mydetail'];
@@ -188,13 +196,69 @@ class NewsAction extends BaseAction {
 		$this->returnStatus();
 	}
 	
-	public function newswin() {
-		$uid = $_GET['uid'];
+	public function getuserData() {
 		$nid = session('nid');
+        $TypeModel = D('UserView');
+		$mygys="ustatus>0 and uid not in(select uid from bt_news_filter where nid=".$nid.")";
+        $dataList = $TypeModel->where($mygys)->order('ustatus desc')->select();
+        $this->returnGridData($dataList, $TypeModel->count());
+    }
+	
+	public function comboData3() {
+		$nid = session('nid');
+        $TypeModel = D('NewsFilter');
+        $list = $TypeModel->join('bt_user a ON a.uid=bt_news_filter.uid')->field(array('a.uid'=>'uid','a.uname'=>'uname'))->where("nid=".$nid)->select();
+        $this->ajaxReturn($list);
+    }
+	
+	public function saveuser() {
+		$uid = $_POST['bt_product_combobox'];
+		$nid = session('nid');
+		$myuser="uid=".$uid." and nid=".$nid;
+		$TypeModel = M('NewsFilter');
+        $data=$TypeModel->where($myuser)->delete();
+		//dump($TypeModel->getLastSql());
+		$this->returnStatus();
+	}
+	
+	public function newswin() {
+		$priceid = $_GET['priceid'];
+		$file = M('Price');
+		$mywin="priceid=".$priceid;
+		$pid = $file->where($mywin)->getField('pid');
+		$uid = $file->where($mywin)->getField('uid');
+		
+		$nid = session('nid');
+		
 		$file = M('NewsWin');
+		$mywin="nid=".$nid." and pid=".$pid;
+		$data = $file->where($mywin)->find();
+		if (empty($data)) {
 		$file->uid=$uid;
 		$file->nid=$nid;
+		$file->pid=$pid;
 		$file->add(); 
+		$this->returnStatus();
+		}else{
+		$this->returnStatus(FALSE, '该竞标已有中标！不能重复添加');
+		}
+		
+	}
+	
+	public function delwin() {
+		$nid = session('nid');
+		$file = M('NewsWin');
+		$mywin="nid=".$nid;
+		$data = $file->where($mywin)->delete();
+		$this->returnStatus();
+	}
+	
+	public function delnews() {
+		$nid = session('nid');
+		//dump($nid);
+		$file = M('News');
+		$mywin="nid=".$nid;
+		$file->where($mywin)->delete();
 		$this->returnStatus();
 	}
 	
@@ -205,11 +269,11 @@ class NewsAction extends BaseAction {
 	public function wingetData() {
 		$memberInfo = session('member');
 		$uid=$memberInfo['uid'];
-		$TypeModel = M('NewsWin');
+		$TypeModel = M('News');
 		if ($memberInfo['ustatus'] == 0) {
-		$dataList = $TypeModel->join('bt_news ON bt_news.nid=bt_news_win.nid')->select();
+		$dataList = $TypeModel->join('bt_news_win ON bt_news.nid=bt_news_win.nid')->group("bt_news.nid")->select();
 		} else {
-		$dataList = $TypeModel->join('bt_news ON bt_news.nid=bt_news_win.nid')->where('bt_news_win.uid = %d', $uid)->select();
+		$dataList = $TypeModel->join('bt_news_win ON bt_news.nid=bt_news_win.nid')->where('bt_news_win.uid = %d', $uid)->group("bt_news.nid")->select();
 		}
 		//$dataList = $TypeModel->join('bt_news ON bt_news.nid=bt_news_win.nid')->where('bt_news_win.uid = %d', $uid)->select();
         $this->returnGridData($dataList, $TypeModel->count());
@@ -222,15 +286,30 @@ class NewsAction extends BaseAction {
 	}
 	
 	public function windata(){
-		$nid = session('nid');
-		$TypeModel = M('NewsWin');
-		$condition="nid=".$nid;
-		$uid=$TypeModel->where($condition)->getField('uid');
+		//$nid = session('nid');
+		//$TypeModel = M('NewsWin');
+		//$condition="nid=".$nid;
+		//$uid=$TypeModel->where($condition)->getField('uid');
 		//dump($uid);
-		$TypeModel = M('NewsProduct');
-		$myprice="bt_news_product.nid=".$nid;
-        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid and a.uid='.$uid)->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate'))->select();
+		//$TypeModel = M('NewsProduct');
+		//$myprice="bt_news_product.nid=".$nid;
+        //$dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid and a.uid='.$uid)->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate'))->select();
+		//$this->returnGridData($dataList, $TypeModel->count());
+		
+		$nid = session('nid');
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
+		$TypeModel = M('NewsWin');
+		$myprice="bt_news_win.nid=".$nid;
+		if ($memberInfo['ustatus'] == 0) {
+		//$dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->join('LEFT JOIN bt_user b ON b.uid=a.uid')->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate','b.uname'=>'uname','a.priceid'=>'priceid'))->order('uname desc')->select();
+		$dataList = $TypeModel->join('LEFT JOIN bt_user a ON a.uid=bt_news_win.uid')->join('LEFT JOIN bt_news_product b ON b.pid=bt_news_win.pid and b.nid=bt_news_win.nid')->join('LEFT JOIN bt_price c ON c.pid=bt_news_win.pid and c.nid=bt_news_win.nid and c.uid=bt_news_win.uid')->where($myprice)->field(array('a.uname'=>'uname','b.pname'=>'pname','b.punit'=>'punit','b.npcount'=>'npcount','b.npdetail'=>'npdetail','c.prate'=>'prate','c.sumrate'=>'sumrate'))->order('uname desc')->select();
 		$this->returnGridData($dataList, $TypeModel->count());
+		} else {
+		$myprice="bt_news_win.nid=".$nid." and bt_news_win.uid=".$uid;
+		$dataList = $TypeModel->join('LEFT JOIN bt_user a ON a.uid=bt_news_win.uid')->join('LEFT JOIN bt_news_product b ON b.pid=bt_news_win.pid and b.nid=bt_news_win.nid')->join('LEFT JOIN bt_price c ON c.pid=bt_news_win.pid and c.nid=bt_news_win.nid and c.uid=bt_news_win.uid')->where($myprice)->field(array('a.uname'=>'uname','b.pname'=>'pname','b.punit'=>'punit','b.npcount'=>'npcount','b.npdetail'=>'npdetail','c.prate'=>'prate','c.sumrate'=>'sumrate'))->order('uname desc')->select();
+		$this->returnGridData($dataList, $TypeModel->count());
+		}
 	}
 	
 	
@@ -305,7 +384,7 @@ class NewsAction extends BaseAction {
 		$uid=$memberInfo['uid'];
         $TypeModel = M('NewsProduct');
 		$myprice="bt_news_product.nid=".$nid;
-        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->join('LEFT JOIN bt_user b ON b.uid=a.uid')->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate','b.uname'=>'uname'))->order('uname desc')->select();
+        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->join('LEFT JOIN bt_user b ON b.uid=a.uid')->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate','b.uname'=>'uname','a.priceid'=>'priceid'))->order('uname desc')->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	

@@ -3,7 +3,7 @@ context.ready = function() {
     $grid.datagrid({
         fit: true,
         idField: 'uid',
-        url: _ROOT_ + '/gys/getData',
+        url: _ROOT_ + '/news/getuserData',
         pagination: true,
         columns: [[
                 {checkbox: true},
@@ -17,7 +17,7 @@ context.ready = function() {
                         return '<font color="red">未审核</font>';
                     }},
                 {field: 'uid', title: '操作', width: 100, align: 'center', formatter: function(value) {
-						var ctrs = ['<span  title="中标" class="img-btn icon-tip" type="detail" uid=' + value + '></span>', '<span title="删除" class="img-btn icon-remove" type="check" uid=' + value + '></span>'];
+						var ctrs = ['<span title="删除" class="img-btn icon-remove" type="check" uid=' + value + '></span>'];
                         return ctrs.join(' ');
 						
                     }}
@@ -27,12 +27,16 @@ context.ready = function() {
                 iconCls: 'icon-add',
                 handler: addView
             }, {
-                text: '删除',
+                text: '删除中标',
                 iconCls: 'icon-remove',
                 handler: doDelete
+			}, {
+                text: '添加竞价人',
+                iconCls: 'icon-add',
+                handler: adduser
             }, '-', {
-                text: '类别管理',
-                iconCls: 'icon-category',
+                text: '删除竞价',
+                iconCls: 'icon-remove',
                 handler: typeView
             }],
         onLoadSuccess: function() {
@@ -63,6 +67,7 @@ context.updateView = function(uid) {
         if (r) {
             $.get(_ROOT_ + '/news/addfilter?uid=' + uid, function(rsp) {
             if (rsp.status) {
+				alert("用户已过滤！该用户无权参与本次竞标！");
                 $grid.datagrid('reload');
             } else {
                 $.alert(rsp.msg);
@@ -79,6 +84,7 @@ context.mydetail = function(uid) {
         if (r) {
             $.get(_ROOT_ + '/news/newswin?uid=' + uid, function(rsp) {
             if (rsp.status) {
+				alert("中标已选！请到中标项目中查看！");
                 $grid.datagrid('reload');
             } else {
                 $.alert(rsp.msg);
@@ -92,14 +98,60 @@ context.mydetail = function(uid) {
 
 
 var doDelete = function() {
-
+	$.confirm('确认删除？', function(r) {
+        if (r) {
+            $.get(_ROOT_ + '/news/delwin', function(rsp) {
+            if (rsp.status) {
+				alert("可以重新选择中标人！");
+                $grid.datagrid('reload');
+            } else {
+                $.alert(rsp.msg);
+                }
+            }, 'JSON');
+            }
+        });
 };
 
 var doSubmit = function() {
-
+    $bt_unit_from = $('#bt_unit_from');
+        $.post(_ROOT_ + '/news/saveuser', $bt_unit_from.toJson(), function(rsp) {
+            if (rsp.status) {
+                $grid.datagrid('reload');
+                viewDialog.dialog('close');
+            } else {
+                $.alert(rsp.msg);
+            }
+        }, "JSON");
 };
-var typeView = function() {
 
+var adduser = function() {
+    viewDialog = $.dialog({
+        title: '添加竞价人',
+        href: _ROOT_ + '/news/adduser',
+        width: 300,
+        bodyStyle: {overflow: 'hidden'},
+        height: 200,
+        buttons: [{
+                text: '提交',
+                handler: doSubmit
+            }]
+    });
+};
+
+var typeView = function() {
+	$.confirm('确认删除？', function(r) {
+        if (r) {
+            $.get(_ROOT_ + '/news/delnews', function(rsp) {
+            if (rsp.status) {
+				alert("竞标项目已删除！");
+                //$grid.datagrid('reload');
+				 window.location.href = "/"; 
+            } else {
+                $.alert(rsp.msg);
+                }
+            }, 'JSON');
+            }
+        });
 };
 var typeViewOnLoad = function() {
 

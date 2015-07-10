@@ -35,7 +35,7 @@
         <div data-options="region:'west'" style="width: 200px;border-right: none;border-bottom: none;" title="导航">
             <ul id="bt_index_menu_tree"></ul>
         </div>
-        <div id="bt_index_layout_center" data-options="region:'center',href:'__ROOT__/global/welcome',tools:[{iconCls:'icon-openlayer',handler:_openNewWindow}]" style="border-bottom: none;border-top: none;padding: 5px;" title="欢迎">
+        <div id="bt_index_layout_center" data-options="region:'center',href:'__ROOT__/global/welcome',tools:[{iconCls:'icon-openlayer',handler:_openNewWindow}]" style="border-bottom: none;border-top: none;padding: 5px; overflow:auto;" title="欢迎">
 
         </div>
         <div data-options="region:'south'" style="height: 25px;text-align: center;line-height: 25px;overflow: hidden;">

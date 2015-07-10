@@ -84,8 +84,17 @@ class GrxxAction extends BaseAction {
 		$did = $memberInfo['uid'];
 		$did="uid=".$did;
 		$mail = $_POST['mymail'];
+		$password = $_POST['password'];
+		$uname = $_POST['company'];
+		$company = $_POST['telname'];
+		$telephone = $_POST['telephone'];
+		$address = $_POST['address'];
 		$file->where($did)->setField('mail',$mail);
-		
+		$file->where($did)->setField('password',pwdHash($password));
+		$file->where($did)->setField('uname',$uname);
+		$file->where($did)->setField('company',$company);
+		$file->where($did)->setField('telephone',$telephone);
+		$file->where($did)->setField('address',$address);
     }
 	
 
