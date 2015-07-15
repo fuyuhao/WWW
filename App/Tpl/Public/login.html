@@ -16,7 +16,7 @@
     <body style="width: 100%;height: 100%;overflow: hidden;padding: 0;margin: 0;">
         <form id="form-body" style="display: none;">
             <ul>
-                <li><input class="form-radio-other-input" type="radio" name="type" value="1" checked="checked"><label>普通用户 </label> &nbsp;&nbsp;&nbsp;<input class="form-radio-other-input" type="radio" name="type" value="0"> <label>管理员</label></li>
+                <li><input class="form-radio-other-input"  name="type" value="1" checked="checked" type="hidden"> &nbsp;&nbsp;&nbsp;<input class="form-radio-other-input"  name="type" value="0" type="hidden"> </li>
                 <li><label>账	号 </label> <input class="easyui-validatebox account form-textbox" type="text" name="account" value="member" required="required"></li>
                 <li><label>密	码 </label> <input class="easyui-validatebox  password form-textbox" type="password" name="password" value="123456" required="required"></li>
             </ul>
