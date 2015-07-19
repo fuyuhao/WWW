@@ -27,6 +27,7 @@ $(function() {
     });
 
     $('#bt_index_control_menu_lock').click(_systemLock);
+	$('#myself').click(_myself);
 });
 
 var _openNewWindow = function() {
@@ -62,5 +63,9 @@ var _systemLock = function() {
             }
         ]
     });
+};
+
+var _myself = function() {
+	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/grxx/index');
 };
 

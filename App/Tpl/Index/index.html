@@ -46,8 +46,7 @@
         <div id="bt_loading_progress" class="progress">执行中...</div>
 
         <div id="bt_index_zxMenu" style="display: none;">  
-            <div data-options="iconCls:'icon-user'">个人信息</div>
-            <div data-options="iconCls:'icon-setting'">个人设置</div>
+            <div data-options="iconCls:'icon-user'" id="myself">个人信息</div>
             <div data-options="iconCls:'icon-theme'">
                 <span>主题切换</span>
                 <div style="width:100px;">  

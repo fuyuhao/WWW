@@ -384,10 +384,62 @@ class NewsAction extends BaseAction {
 		$uid=$memberInfo['uid'];
         $TypeModel = M('NewsProduct');
 		$myprice="bt_news_product.nid=".$nid;
-        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->join('LEFT JOIN bt_user b ON b.uid=a.uid')->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate','b.uname'=>'uname','a.priceid'=>'priceid'))->order('uname desc')->select();
+        $dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid and a.pid=bt_news_product.pid')->join('LEFT JOIN bt_user b ON b.uid=a.uid')->where($myprice)->field(array('bt_news_product.pid'=>'pid','bt_news_product.pname'=>'pname','bt_news_product.punit'=>'punit','bt_news_product.npcount'=>'npcount','bt_news_product.npdetail'=>'npdetail','a.prate'=>'prate','a.sumrate'=>'sumrate','b.uname'=>'uname','a.priceid'=>'priceid'))->order('pid,sumrate')->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	
+	public function sumprice(){
+		$this->display();
+	}
 	
+	public function getsumPrice() {
+		//$nid = session('nid');
+        //$TypeModel = M('NewsProduct');
+        //$dataList = $TypeModel->join('LEFT JOIN bt_price a ON a.nid=bt_news_product.nid')->where('bt_news_product.nid = %d', $nid)->select();
+				
+		$nid = session('nid');
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
+        $TypeModel = M('Price');
+		$myprice="bt_price.nid=".$nid;
+        $dataList = $TypeModel->join('LEFT JOIN bt_user b ON b.uid=bt_price.uid')->where($myprice)->field(array('sum(bt_price.sumrate)'=>'sumrate','b.uname'=>'uname','b.uid'=>'uid'))->group('uid')->order('sumrate asc')->select();
+        $this->returnGridData($dataList, $TypeModel->count());
+    }
+	
+	public function newssumwin() {
+		$uid = $_GET['uid'];
+		$nid = session('nid');
+		$file = M('Price');
+		$mywin="uid=".$uid." and nid=".$nid;
+		$myprice = $file->where($mywin)->select();
+		//dump($mypirce);
+		$file2 = M('NewsWin');
+		$mywin="nid=".$nid;
+		$data = $file2->where($mywin)->find();
+		//dump($mywin);
+		if (empty($data)) {
+		//$file->uid=$uid;
+		//$file->nid=$nid;
+		//$file->pid=$pid;
+		//$file->add(); 
+		//$this->returnStatus();
+		//dump($myprice);
+		foreach($myprice as $price){
+			//dump($price);
+			//$element->name = 'qqyumidi';
+			//dump($price);
+			$file2->uid=$uid;
+			$file2->nid=$nid;
+			$file2->pid=$price["pid"];
+			$file2->add(); 
+			
+		}
+		$this->returnStatus();
+		}else{
+		$this->returnStatus(FALSE, '该竞标已有中标！不能重复添加');
+		}
+		
+
+	}
 }
 ?>

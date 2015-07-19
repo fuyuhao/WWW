@@ -28,6 +28,16 @@ class RegisterAction extends Action {
 	}
 	
 	$file = M("User");
+	
+	$mywin="account=".$account;
+	$data = $file->where($mywin)->find();
+	if (empty($data)) {
+
+	}else{
+		$this->error("用户名已存在！");
+	}
+	
+	
 	if (!$file->create()) {
         $this->returnStatus(false, $file->getError());
     } else {
