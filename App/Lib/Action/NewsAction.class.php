@@ -84,7 +84,9 @@ class NewsAction extends BaseAction {
 		$memberInfo = session('member');
 		$uid=$memberInfo['uid'];
         $TypeModel = D('News');
-		$current  = "unix_timestamp(nstart) < unix_timestamp(NOW()) and unix_timestamp(nend) > unix_timestamp(NOW()) and nid NOT IN (select nid from bt_news_filter where uid=".$uid.")";
+		//$current  = "unix_timestamp(nstart) < unix_timestamp(NOW()) and unix_timestamp(nend) > unix_timestamp(NOW()) and nid NOT IN (select nid from bt_news_filter where uid=".$uid.")";
+		//开始之前就可以看到
+		$current  = "unix_timestamp(nend) > unix_timestamp(NOW())";
         $dataList = $TypeModel->where($current)->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
@@ -100,7 +102,28 @@ class NewsAction extends BaseAction {
 	public function addprice() {
 		$nid = $_GET['nid'];
 		session('nid',$nid);
-		$this->display();
+		
+		$memberInfo = session('member');
+		$uid=$memberInfo['uid'];
+		$TypeModel = D('News');
+		$current  = "unix_timestamp(nstart) < unix_timestamp(NOW()) and unix_timestamp(nend) > unix_timestamp(NOW()) and nid=".$nid;
+		$data = $TypeModel->where($current)->select();
+		if (empty($data)) {
+			$this->redirect("/news/infail/");
+		}
+		
+		$TypeModel2 = D('NewsFilter');
+		$current2  = "nid=".$nid." and uid=".$uid;
+		//dump($current2);
+		$data2 = $TypeModel2->where($current2)->select();
+		if (empty($data2)) {
+		}else{
+			$this->redirect("/news/infail/");
+		}
+	
+	$this->display();
+		
+		
 	}
 	
 	public function getPriceData() {
@@ -440,6 +463,10 @@ class NewsAction extends BaseAction {
 		}
 		
 
+	}
+	
+	public function infail() {
+		$this->display();
 	}
 	
 

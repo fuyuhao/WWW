@@ -18,8 +18,10 @@ class RegisterAction extends Action {
 	$telephone = $_POST['telephone'];
 	$address = $_POST['address'];
 	$mail = $_POST['email'];
+	$gyslx = $_POST['gyslx'];
 	//$this->assign('account',$account);
 	//$this->assign('password',$password);
+	//dump($gyslx);
 	
 	if(!$upload->upload()) {
 	$this->error($upload->getErrorMsg());
@@ -48,6 +50,7 @@ class RegisterAction extends Action {
 		$file->telephone=$telephone;
 		$file->address=$address;
 		$file->mail=$mail;
+		$file->gyslx=$gyslx;
 		
 		$file->ustatus=2;
 		$file->imgfile1 = $info[0]["savename"];

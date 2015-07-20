@@ -120,6 +120,16 @@
 			<input class="easyui-validatebox form-textbox" type="text" name="email" id="email" style="width:100%" required="required">
 	</div>
 	
+	<div style="margin-bottom:20px">
+			<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">供应商类型：</div>
+		<select class="easyui-combobox" style="width:200px;" name="gyslx" id="gyslx">
+		<option value="原料">原料</option>
+		<option value="五金">五金</option>
+		<option value="办公用品">办公用品</option>
+		<option value="外协加工">外协加工</option>
+	</select>
+	</div>
+	
 	
 		
 	<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">营业执照：</div>
@@ -154,7 +164,7 @@
     <img id="img4" src="__ROOT____CSS__/blank.gif" width="120" height="100" />
 	</div>	
 	
-	
+
 		
 		
 		<div>

@@ -45,11 +45,11 @@ context.ready = function() {
                 handler: addView
             }, {
                 text: '新增产品单位',
-                iconCls: 'icon-remove',
+                iconCls: 'icon-add',
                 handler: doDelete
             }, '-', {
                 text: '新增产品信息',
-                iconCls: 'icon-category',
+                iconCls: 'icon-add',
                 handler: typeView
             }],
         onLoadSuccess: function() {

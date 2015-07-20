@@ -34,6 +34,7 @@ context.ready = function() {
                 {field: 'uname', title: '公司名称', width: 90, align: 'center'},
                 {field: 'company', title: '联系人', width: 130, align: 'center'},
                 {field: 'telephone', title: '电话', width: 130, align: 'center'},
+				{field: 'gyslx', title: '供应商类型', width: 130, align: 'center'},
                 {field: 'ustatus', title: '审核状态', width: 70, align: 'center', formatter: function(value) {
                         if (value === '1') {
                             return '已审核';
