@@ -16,17 +16,17 @@ context.ready = function() {
                     }}
             ]],
         toolbar: [{
-                text: '新增',
+                text: '添加产品',
                 iconCls: 'icon-add',
                 handler: addView
- //           }, {
-  //              text: '删除',
- //               iconCls: 'icon-remove',
- //               handler: doDelete
-  //          }, '-', {
-  //              text: '类别管理',
-  //              iconCls: 'icon-category',
-  //              handler: typeView
+            }, {
+                text: '新增产品单位',
+                iconCls: 'icon-add',
+                handler: doDelete
+            }, '-', {
+                text: '新增产品信息',
+                iconCls: 'icon-add',
+                handler: typeView
             }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
@@ -70,8 +70,31 @@ var updateView = function(uid) {
 	
 };
 var doDelete = function() {
-
+    viewDialog = $.dialog({
+        title: '单位添加',
+        href: _ROOT_ + '/unittype/add',
+        width: 300,
+        bodyStyle: {overflow: 'hidden'},
+        height: 200,
+        buttons: [{
+                text: '提交',
+                handler: doSubmit1
+            }]
+    });
 };
+
+var doSubmit1 = function() {
+    $bt_unit_from = $('#bt_unit_from');
+        $.post(_ROOT_ + '/unittype/doSave', $bt_unit_from.toJson(), function(rsp) {
+            if (rsp.status) {
+                $grid.datagrid('reload');
+                viewDialog.dialog('close');
+            } else {
+                $.alert(rsp.msg);
+            }
+        }, "JSON");
+};
+
 
 var doSubmit = function() {
     $bt_unit_from = $('#bt_unit_from');
@@ -84,8 +107,31 @@ var doSubmit = function() {
             }
         }, "JSON");
 };
-var typeView = function() {
 
+var doSubmit2 = function() {
+    $bt_unit_from = $('#bt_unit_from');
+        $.post(_ROOT_ + '/product/doSave', $bt_unit_from.toJson(), function(rsp) {
+            if (rsp.status) {
+                $grid.datagrid('reload');
+                viewDialog.dialog('close');
+            } else {
+                $.alert(rsp.msg);
+            }
+        }, "JSON");
+};
+
+var typeView = function() {
+    viewDialog = $.dialog({
+        title: '产品添加',
+        href: _ROOT_ + '/product/add',
+        width: 300,
+        bodyStyle: {overflow: 'hidden'},
+        height: 200,
+        buttons: [{
+                text: '提交',
+                handler: doSubmit2
+            }]
+    });
 };
 var typeViewOnLoad = function() {
 

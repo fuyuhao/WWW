@@ -42,6 +42,15 @@ class GysAction extends BaseAction {
         $this->returnStatus();
 		
 	}
+	
+	public function undocheck(){
+		$did = $_GET['uid'];
+		if ($did) {
+            $Model = D("User");
+			$Model->where('uid = %d', $did)->save(array('ustatus' => 2));
+        }
+		$this->success('弃审成功！','/');
+	}
 
 
 }

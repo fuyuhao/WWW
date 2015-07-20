@@ -17,19 +17,19 @@ context.ready = function() {
                         return ctrs.join(' ');
                     }}
             ]],
-        toolbar: [{
-                text: '新增',
-                iconCls: 'icon-add',
-                handler: addView
-            }, {
-                text: '删除',
-                iconCls: 'icon-remove',
-                handler: doDelete
-            }, '-', {
-                text: '类别管理',
-                iconCls: 'icon-category',
-                handler: typeView
-            }],
+   //     toolbar: [{
+   //             text: '新增',
+  //              iconCls: 'icon-add',
+   //             handler: addView
+   //         }, {
+   //             text: '删除',
+   //             iconCls: 'icon-remove',
+   //             handler: doDelete
+  //          }, '-', {
+   //             text: '类别管理',
+   //             iconCls: 'icon-category',
+   //             handler: typeView
+   //         }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
             $bodyView.find('span[nid]').click(function(e) {

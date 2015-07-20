@@ -441,5 +441,9 @@ class NewsAction extends BaseAction {
 		
 
 	}
+	
+
+	
+	
 }
 ?>
