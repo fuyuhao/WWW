@@ -22,6 +22,9 @@
 	</script>
 	
      <body>
+	 <center>
+	 <div class="easyui-panel" title="供应商详情" style="width:800px;padding:30px 60px">
+	 
         <volist name="data" id="vo">
 		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm({$vo.uid})">弃审</a>
         <br>公司名称：{$vo.uname}<br/>
@@ -40,6 +43,8 @@
 		<br/>
 		<img src=__UPLOADS__/{$vo.imgfile4} />
         </volist>
+	</div>
+</center>		
      </body>
 
 	

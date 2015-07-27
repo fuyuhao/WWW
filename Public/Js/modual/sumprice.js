@@ -13,10 +13,10 @@ context.ready = function() {
                         return '<span title="中标" class="img-btn icon-edit" pid=' + value + '></span>';
                     }}
             ]],
-       // toolbar: [{
-      //          text: '报价合计',
-     //           iconCls: 'icon-add',
-      //          handler: addView
+        toolbar: [{
+                text: '报价明细',
+                iconCls: 'icon-add',
+               handler: addView
      //      }, {
       //          text: '删除',
      //           iconCls: 'icon-remove',
@@ -25,7 +25,7 @@ context.ready = function() {
    //             text: '类别管理',
   //              iconCls: 'icon-category',
  //               handler: typeView
-  //          }],
+            }],
         onLoadSuccess: function() {
             var $bodyView = $grid.data('datagrid').dc.view2;
             $bodyView.find('span[pid]').click(function(e) {
@@ -38,8 +38,9 @@ context.ready = function() {
 };
 
 var addView = function() {
-	var myurl=_ROOT_ + '/news/sumprice'
-    window.open(myurl);   
+	//var myurl=_ROOT_ + '/news/sumprice'
+    //window.open(myurl);   
+	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/allprice');
 };
 
 function getFile(address,parameters){

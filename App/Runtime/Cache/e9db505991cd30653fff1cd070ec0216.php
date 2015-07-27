@@ -22,6 +22,9 @@
 	</script>
 	
      <body>
+	 <center>
+	 <div class="easyui-panel" title="供应商详情" style="width:800px;padding:30px 60px">
+	 
         <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm(<?php echo ($vo["uid"]); ?>)">弃审</a>
         <br>公司名称：<?php echo ($vo["uname"]); ?><br/>
 		<br>账号：<?php echo ($vo["account"]); ?><br/>
@@ -38,6 +41,8 @@
 		<img src=__UPLOADS__/<?php echo ($vo["imgfile3"]); ?> />
 		<br/>
 		<img src=__UPLOADS__/<?php echo ($vo["imgfile4"]); ?> /><?php endforeach; endif; else: echo "" ;endif; ?>
+	</div>
+</center>		
      </body>
 
 	

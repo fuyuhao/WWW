@@ -84,7 +84,7 @@ context.ready = function() {
 var addView = function() {
 	//var myurl=_ROOT_ + '/news/allprice'
     //window.open(myurl);
-	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/allprice');
+	$('#bt_index_layout_center').panel('open').panel('refresh',_ROOT_ +'/news/sumprice');
 };
 context.updateView = function(uid) {
 	

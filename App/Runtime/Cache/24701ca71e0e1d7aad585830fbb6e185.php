@@ -31,12 +31,12 @@ context.ready = function() {
         pagination: true,
         columns: [[
                 {checkbox: true},
-				{field: 'uname', title: '供应商名称', width: 130, align: 'center'},
-                {field: 'pname', title: '产品名称', width: 130, align: 'center'},
+				{field: 'uname', title: '供应商名称', width: 130, align: 'center',sortable:'true'},
+                {field: 'pname', title: '产品名称', width: 130, align: 'center',sortable:'true'},
                 {field: 'punit', title: '产品单位', width: 130, align: 'center'},
 				{field: 'npcount', title: '产品数量', width: 130, align: 'center'},
 				{field: 'npdetail', title: '备注信息', width: 200, align: 'center'},
-				{field: 'prate', title: '产品单价', width: 130, align: 'center'},
+				{field: 'prate', title: '产品单价', width: 130, align: 'center',sortable:'true'},
 				{field: 'sumrate', title: '产品金额', width: 130, align: 'center'},
                 {field: 'priceid', title: '中标操作', width: 100, align: 'center', formatter: function(value) {
                         return '<span title="中标" class="img-btn icon-edit" pid=' + value + '></span>';

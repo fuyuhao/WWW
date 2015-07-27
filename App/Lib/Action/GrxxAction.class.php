@@ -73,7 +73,9 @@ class GrxxAction extends BaseAction {
 	{
 		$file->where($did)->setField('imgfile4',$info[0]["savename"]);
 	}
+	if ($memberInfo['ustatus'] > 0) {
 	$file->where($did)->setField('ustatus',2);
+	}
 	$this->returnStatus();
 	}
 	
@@ -95,7 +97,9 @@ class GrxxAction extends BaseAction {
 		$file->where($did)->setField('company',$company);
 		$file->where($did)->setField('telephone',$telephone);
 		$file->where($did)->setField('address',$address);
+		if ($memberInfo['ustatus'] > 0) {
 		$file->where($did)->setField('ustatus',2);
+		}
     }
 	
 
