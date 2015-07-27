@@ -40,7 +40,9 @@
 		<br/>
 		<img src=__UPLOADS__/<?php echo ($vo["imgfile3"]); ?> />
 		<br/>
-		<img src=__UPLOADS__/<?php echo ($vo["imgfile4"]); ?> /><?php endforeach; endif; else: echo "" ;endif; ?>
+		<!--
+		<img src=__UPLOADS__/<?php echo ($vo["imgfile4"]); ?> />
+		--><?php endforeach; endif; else: echo "" ;endif; ?>
 	</div>
 </center>		
      </body>

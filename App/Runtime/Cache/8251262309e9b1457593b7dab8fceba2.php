@@ -156,6 +156,7 @@
     <img id="img3" src="__ROOT____CSS__/blank.gif" width="120" height="100" />
 	</div>	
 	
+	<!-- 
 	<div style="font-weight:900;font-size:16px;font-family:'Microsoft YaHei',微软雅黑,'MicrosoftJhengHei',华文细黑,STHeiti,MingLiu">法人身份证：</div>
 	<div style="margin-bottom:20px">
 	<input type="file" onchange="PreviewImage(this,'imgPreview4')" name="image4"/>
@@ -163,7 +164,7 @@
 	<div id="imgPreview4" style='display:none;width:120px;height:100px;margin-bottom:20px;'>
     <img id="img4" src="__ROOT____CSS__/blank.gif" width="120" height="100" />
 	</div>	
-	
+	-->
 
 		
 		

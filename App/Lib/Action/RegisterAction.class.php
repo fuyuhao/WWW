@@ -56,7 +56,7 @@ class RegisterAction extends Action {
 		$file->imgfile1 = $info[0]["savename"];
 		$file->imgfile2 = $info[1]["savename"];
 		$file->imgfile3 = $info[2]["savename"];
-		$file->imgfile4 = $info[3]["savename"];
+		//$file->imgfile4 = $info[3]["savename"];
 		$file->add(); 
 	}
 		$this->display();
