@@ -8,7 +8,9 @@ context.ready = function() {
         columns: [[
                 {checkbox: true},
 				{field: 'uname', title: '供应商名称', width: 130, align: 'center'},
-				{field: 'sumrate', title: '金额合计', width: 130, align: 'center'},
+				{field: 'sumrate', title: '合计总金额(元)', width: 130, align: 'center'},
+				{field: 'fapiao', title: '发票类型', width: 130, align: 'center'},
+				{field: 'zhangqi', title: '账期(天)', width: 130, align: 'center'},
                 {field: 'uid', title: '中标操作', width: 100, align: 'center', formatter: function(value) {
                         return '<span title="中标" class="img-btn icon-edit" pid=' + value + '></span>';
                     }}

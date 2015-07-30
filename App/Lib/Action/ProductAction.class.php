@@ -18,9 +18,13 @@ class ProductAction extends BaseAction {
     }
 	
 	public function getData() {
-        $TypeModel = D('ProductView');
-        $dataList = $TypeModel->order('pid asc')->select();
-        $this->returnGridData($dataList, $TypeModel->count());
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 20;
+	$offset = ($page - 1 ) * $rows;
+	
+    $TypeModel = D('ProductView');
+    $dataList = $TypeModel->order('pid asc')->limit($offset.','.$rows)->select();
+    $this->returnGridData($dataList, $TypeModel->count());
     }
 	
 	//删除

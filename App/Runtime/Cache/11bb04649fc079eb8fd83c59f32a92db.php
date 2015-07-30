@@ -1,6 +1,6 @@
-<?php if (!defined('THINK_PATH')) exit();?>﻿		<link rel="stylesheet" href="/public/KindEditor/themes/default/default.css" />
-		<script charset="utf-8" src="/public/KindEditor/kindeditor-min.js"></script>
-		<script charset="utf-8" src="/public/KindEditor/lang/zh_CN.js"></script>
+<?php if (!defined('THINK_PATH')) exit();?>﻿		<link rel="stylesheet" href="/Public/kindeditor//themes/default/default.css" />
+		<script charset="utf-8" src="/Public/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="/Public/kindeditor/lang/zh_CN.js"></script>
 		
 	<script>
 
@@ -91,7 +91,7 @@
 		resizeType : 1,
 		allowPreviewEmoticons : false,
 		allowImageUpload : true,
-		basePath: '/public/kindeditor/',
+		basePath: '/Public/kindeditor/',
 		items : [
 			'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 			'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',

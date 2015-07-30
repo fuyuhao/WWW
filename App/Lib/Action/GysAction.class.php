@@ -18,9 +18,13 @@ class GysAction extends BaseAction {
     }
 	
 	public function getData() {
+	$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 20;
+	$offset = ($page - 1 ) * $rows;
+		
         $TypeModel = D('UserView');
 		$mygys="ustatus>0";
-        $dataList = $TypeModel->where($mygys)->order('ustatus desc')->select();
+        $dataList = $TypeModel->where($mygys)->order('ustatus desc')->limit($offset.','.$rows)->select();
         $this->returnGridData($dataList, $TypeModel->count());
     }
 	
